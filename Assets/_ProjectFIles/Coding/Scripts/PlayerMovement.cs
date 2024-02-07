@@ -34,6 +34,7 @@ public class Player_Movement : MonoBehaviour
         {
             //Debug.Log("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            
             //animator.SetBool("IsJump", true);
 
         }
@@ -42,6 +43,7 @@ public class Player_Movement : MonoBehaviour
         {
             //Debug.Log("Jumping");
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            rb.gravityScale = 1.0f;
             //animator.SetBool("IsJump", true);
         }
 
