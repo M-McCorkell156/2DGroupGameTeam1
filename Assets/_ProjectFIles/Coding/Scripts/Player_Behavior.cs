@@ -9,7 +9,7 @@ public class Player_Movement : MonoBehaviour
 {
     private float horizontal;
     [SerializeField] private float playerSpeed = 8f;
-    [SerializeField] private float jumpingPower = 16f;
+    [SerializeField] private float jumpingPower = 20f;
     private bool isFacingRight = true;
 
     private Animator animator;
@@ -18,14 +18,12 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    private bool countJump;
+    
     [SerializeField] private GameObject chute;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.drag = 1;
-        playerSpeed = 5;
         animator = GetComponent<Animator>();
         chute.SetActive(false);
     }
@@ -35,23 +33,22 @@ public class Player_Movement : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && IsGrounded() && countJump == false)
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Debug.Log("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             //animator.SetBool("IsJump", true);
-            countJump = true;
+            
 
         }
 
-        if (Input.GetButtonDown("Jump") && IsGrounded() == false && countJump == true)
+        if (Input.GetButtonDown("Jump") && IsGrounded() == false )
         {
             chute.SetActive(true);
             Debug.Log("Para");
             rb.drag = 5;
-            playerSpeed = 2;
-            countJump = false;
-            Debug.Log(countJump);
+            playerSpeed = 5;
+            
         }
         /*
         if (!Input.GetButton("Jump") && IsGrounded())
@@ -123,9 +120,7 @@ public class Player_Movement : MonoBehaviour
             chute.SetActive(false);
             Debug.Log("Ground");
             rb.drag = 1;
-            playerSpeed = 5;
-            countJump = false;
-            Debug.Log(countJump);
+            playerSpeed = 8f;
         }
     }
 }
