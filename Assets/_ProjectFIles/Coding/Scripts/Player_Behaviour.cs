@@ -24,8 +24,6 @@ public class Player_Movement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.drag = 1;
-        playerSpeed = 5;
         animator = GetComponent<Animator>();
         chute.SetActive(false);
     }
@@ -35,23 +33,29 @@ public class Player_Movement : MonoBehaviour
 
             horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && IsGrounded() && countJump == false)
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Debug.Log("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             //animator.SetBool("IsJump", true);
-            countJump = true;
+            
 
         }
 
-        if (Input.GetButtonDown("Jump") && IsGrounded() == false && countJump == true)
+        if (Input.GetButtonDown("Jump") && IsGrounded() == false )
         {
             chute.SetActive(true);
             Debug.Log("Para");
             rb.drag = 5;
-            playerSpeed = 2;
-            countJump = false;
-            Debug.Log(countJump);
+            playerSpeed = 5;
+            
+        }
+        if (IsGrounded())
+        {
+            chute.SetActive(false);
+            Debug.Log("Ground");
+            rb.drag = 1;
+            playerSpeed = 8f;
         }
         /*
         if (!Input.GetButton("Jump") && IsGrounded())
@@ -116,16 +120,5 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Ground") 
-        {
-            chute.SetActive(false);
-            Debug.Log("Ground");
-            rb.drag = 1;
-            playerSpeed = 5;
-            countJump = false;
-            Debug.Log(countJump);
-        }
-    }
+    
 }
