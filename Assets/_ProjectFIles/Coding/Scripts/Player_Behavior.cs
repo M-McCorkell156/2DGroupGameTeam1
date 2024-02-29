@@ -50,6 +50,13 @@ public class Player_Movement : MonoBehaviour
             playerSpeed = 5;
             
         }
+        if (IsGrounded())
+        {
+            chute.SetActive(false);
+            Debug.Log("Ground");
+            rb.drag = 1;
+            playerSpeed = 8f;
+        }
         /*
         if (!Input.GetButton("Jump") && IsGrounded())
         {
@@ -113,14 +120,14 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.tag == "Ground")
-        {
-            chute.SetActive(false);
-            Debug.Log("Ground");
-            rb.drag = 1;
-            playerSpeed = 8f;
-        }
-    }
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Ground")
+    //    {
+    //        chute.SetActive(false);
+    //        Debug.Log("Ground");
+    //        rb.drag = 1;
+    //        playerSpeed = 8f;
+    //    }
+    //}
 }
