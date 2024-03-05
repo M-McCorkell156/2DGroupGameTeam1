@@ -46,7 +46,7 @@ public class Player_Movement : MonoBehaviour
         {
             chute.SetActive(true);
             Debug.Log("Para");
-            rb.drag = 5;
+            rb.drag = 7;
             playerSpeed = 5;
             
         }
