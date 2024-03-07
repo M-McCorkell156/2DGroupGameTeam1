@@ -19,11 +19,27 @@ public class TwigFloating : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, nextPosition, Time.deltaTime * speed);
-        if (transform.position == nextPosition )
+        if (transform.position == nextPosition)
         {
             nextPosition = (nextPosition == pointA.position) ? pointB.position : pointA.position;
         }
+
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("SlowDown"))
+        {
+            Debug.Log("AH!");
+            speed = 1f;
+        }
+    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("SlowDown"))
+    //    {
+    //        speed = 5f;
+    //    }
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -31,6 +47,7 @@ public class TwigFloating : MonoBehaviour
         {
             collision.gameObject.transform.parent = transform;
         }
+        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -39,5 +56,7 @@ public class TwigFloating : MonoBehaviour
         {
             collision.gameObject.transform.parent = null;
         }
+        
     }
+    
 }
