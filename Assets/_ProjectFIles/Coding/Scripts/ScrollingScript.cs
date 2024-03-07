@@ -39,7 +39,7 @@ public class ScrollingScript : MonoBehaviour
    
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         //Changes position to follow player
