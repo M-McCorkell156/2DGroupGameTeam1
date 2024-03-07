@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DeathBox : MonoBehaviour
+public class Sciaphilla : MonoBehaviour
 {
     [SerializeField] Collider2D collision;
     private void Awake()
@@ -14,7 +14,7 @@ public class DeathBox : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-        SceneManager.LoadScene("Nathan---Minx");   
+            SceneManager.LoadScene("Level 3");
         }
     }
 }
