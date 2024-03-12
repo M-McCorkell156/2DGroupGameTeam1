@@ -35,7 +35,7 @@ public class Player_Movement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            Debug.Log("Jump");
+            //Debug.Log("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             //animator.SetBool("IsJump", true);
             
@@ -45,7 +45,7 @@ public class Player_Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded() == false )
         {
             chute.SetActive(true);
-            Debug.Log("Para");
+            //Debug.Log("Para");
             rb.drag = 7;
             playerSpeed = 5;
             
@@ -53,7 +53,7 @@ public class Player_Movement : MonoBehaviour
         if (IsGrounded())
         {
             chute.SetActive(false);
-            Debug.Log("Ground");
+            //Debug.Log("Ground");
             rb.drag = 1;
             playerSpeed = 8f;
         }
