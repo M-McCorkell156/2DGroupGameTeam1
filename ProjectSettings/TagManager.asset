@@ -5,13 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Sciaphilla
   - Debris
+  - Sciaphilla
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - GroundLayer

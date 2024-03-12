@@ -18022,16 +18022,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1670363228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f43627d25d291a4bb9dfd49233491d0, type: 3}
+  m_Script: {fileID: 11500000, guid: ae51326b4f328fa49b455865ae5adf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
-  jumpingPower: 10
-  groundCheck: {fileID: 748955205}
-  groundLayer:
+  Data: {fileID: 11400000, guid: e52509804053a424da894078677209e6, type: 2}
+  _groundCheckPoint: {fileID: 748955205}
+  _groundCheckSize: {x: 0.49, y: 0.03}
+  _groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  chute: {fileID: 1492458345}
 --- !u!70 &1670363230
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
