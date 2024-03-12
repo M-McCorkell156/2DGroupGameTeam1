@@ -5,13 +5,16 @@ using UnityEngine;
 public class TwigFloating : MonoBehaviour
 {
     [SerializeField] private Transform pointA, pointB;
-    [SerializeField] private float speed;
+    [SerializeField] private float twigSpeed;
+    [SerializeField] private float waitTime;
+    private float speed;
 
     private Vector3 nextPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        speed = twigSpeed;
         nextPosition = pointB.position;
     }
 
@@ -24,30 +27,37 @@ public class TwigFloating : MonoBehaviour
         {
             Debug.Log(nextPosition.ToString());
             nextPosition = (nextPosition == pointA.position) ? pointB.position : pointA.position;
+            //trying to make platform wait at Point B for a couple seconds
+            //Code not working properly, Logging it prints the message but doesn't actually wait.
             if (transform.position == pointB.position)
             {
-                StartCoroutine(Wait(gameObject));
+                StartCoroutine(Waiting(gameObject));
             }
         }
         
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("SlowDown"))
-        {
-            Debug.Log("AH!");
-            speed = 1f;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("SlowDown"))
-        {
-            speed = 3f;
-        }
-    }
 
+    //Attempt to slow twig down
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("SlowDown"))
+    //    {
+    //        Debug.Log("AH!");
+    //        speed = 1f;
+    //    }
+    //}
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("SlowDown"))
+    //    {
+    //        speed = 3f;
+    //    }
+    //}
+
+
+    //Moves Player with Platform
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -65,11 +75,14 @@ public class TwigFloating : MonoBehaviour
         }
 
     }
-    IEnumerator Wait(GameObject twig)
+    IEnumerator Waiting(GameObject twig)
     {
-        yield return new WaitForSeconds(5f);
+        speed = 0f;
+        yield return new WaitForSeconds(waitTime);
+        speed = twigSpeed;
+        //Not waiting for some reason
         Debug.Log("Waiting");
-        transform.position = transform.position;
+        //My attempt at getting it to wait
     }
 
 }
