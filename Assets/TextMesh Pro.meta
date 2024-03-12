@@ -1,6 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/TextMesh Pro.meta
 guid: f54d1bd14bd3ca042bd867b519fee8cc
 folderAsset: yes
+=======
+<<<<<<<< HEAD:Assets/_ProjectFIles/Scenes/Matt---Meat.unity.meta
+guid: 1704b7b2c67b5044abe90393b9d7842c
+========
+guid: b2ab655cd489d9945b253c362da17abe
+>>>>>>>> Natan---Minx:Assets/_ProjectFIles/Scenes/Nathan---Minx.unity.meta
+>>>>>>> Matt---Meat:Assets/_ProjectFIles/Scenes/Matt---Meat.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
