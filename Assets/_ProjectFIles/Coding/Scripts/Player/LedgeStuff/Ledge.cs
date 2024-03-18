@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Ledge : MonoBehaviour
@@ -15,10 +16,17 @@ public class Ledge : MonoBehaviour
 
     private bool canGrabLedge = true;
     private bool canClimb;
+
+    private Animator animator;
     //------------------------------------------\\
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     void Update()
     {
         CheckForLedge();
+        animator.SetBool("CanClimb", canClimb);
     }
     private void CheckForLedge()
     {
@@ -38,12 +46,13 @@ public class Ledge : MonoBehaviour
         {
             transform.position = climbBegunPos;
             //Only because I don't have animations in
-            LedgeClimbOver();
+            Invoke("LedgeClimbOver", 1f);
         }
     }
 
     private void LedgeClimbOver()
     {
+        Debug.Log("Climbing");
         canClimb = false;
         transform.position = climbOverPos;
         canGrabLedge = true;
