@@ -28,14 +28,22 @@ public class Player_Behaviour : MonoBehaviour
     //Chute
     private bool _isChuting;
 
+    //Sticky roof 
+    private bool _isStickng; 
+
     [Header("Checks")]
     [SerializeField] private Transform _groundCheckPoint;
     //Size of groundCheck depends on the size of your character generally you want them slightly small than width (for ground) and height (for the wall check)
     [SerializeField] private Vector2 _groundCheckSize = new Vector2(0.49f, 0.03f);
+
+    [SerializeField] private Transform _roofCheckPoint;
+    [SerializeField] private Vector2 _roofCheckSize = new Vector2(0.49f, 0.03f);
+
     [Space(5)]
 
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private LayerMask _stickyRoofLayer;
     #endregion
 
     private void Awake()
@@ -96,6 +104,15 @@ public class Player_Behaviour : MonoBehaviour
                 LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
                 _isChuting = false;
             }
+        }
+
+        if (Physics2D.OverlapBox(_roofCheckPoint.position,_roofCheckSize,0,_stickyRoofLayer))
+        {
+            _isStickng = true;
+        }
+        else
+        {
+            _isStickng = false;
         }
         #endregion
 
@@ -238,12 +255,22 @@ public class Player_Behaviour : MonoBehaviour
         #region Chute
         if (_isChuting)
         {
-            Debug.Log("chuting");
             RB.gravityScale = Data.realChuteGravity;
         }
         else
         {
             RB.gravityScale = Data.gravityScale;
+        }
+        #endregion
+
+        #region Stickig 
+        if (_isStickng)
+        {
+
+        }
+        else
+        {
+
         }
         #endregion
 
@@ -336,6 +363,10 @@ public class Player_Behaviour : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(_groundCheckPoint.position, _groundCheckSize);
+        Gizmos.color = Color.blue;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(_roofCheckPoint.position, _roofCheckSize);
         Gizmos.color = Color.blue;
     }
     #endregion
