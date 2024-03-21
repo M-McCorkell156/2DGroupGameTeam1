@@ -147,7 +147,8 @@ public class Player_Behaviour : MonoBehaviour
         //Chute
         if(CanChute() && LastPressedJumpTime > 0)
         {
-            _isChuting = true; 
+            _isChuting = true;
+            IsJumping = false;
         }
         #endregion
 
