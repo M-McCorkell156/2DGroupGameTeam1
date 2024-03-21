@@ -9,7 +9,7 @@ public class Ledge_Detection : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayer;
 
-    [SerializeField] private Ledge player;
+    [SerializeField] private Player_Behaviour player;
 
     private bool canDetect;
 

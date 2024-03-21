@@ -44,6 +44,23 @@ public class Player_Behaviour : MonoBehaviour
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _stickyRoofLayer;
+
+    #region LedgeStuff
+    [Header("Ledge Info")]
+    [HideInInspector] public bool ledgeDetected;
+
+    [SerializeField] private Vector2 offset1;
+    [SerializeField] private Vector2 offset2;
+
+    private Vector2 climbBegunPos;
+    private Vector2 climbOverPos;
+
+    private bool canGrabLedge = true;
+    private bool canClimb;
+
+    
+    #endregion
+
     #endregion
 
     private void Awake()
@@ -187,7 +204,9 @@ public class Player_Behaviour : MonoBehaviour
         #endregion
 
         ControlAnimation();
+        CheckForLedge();
     }
+
     private void FixedUpdate()
     {        
             Run(1);
@@ -267,12 +286,12 @@ public class Player_Behaviour : MonoBehaviour
         #region Stickig 
         if (_isStickng)
         {
+            SetGravityScale(0);
+            //Debug.Log("Sticking");
+
 
         }
-        else
-        {
 
-        }
         #endregion
 
         //Calculate difference between current velocity and desired velocity
@@ -354,10 +373,46 @@ public class Player_Behaviour : MonoBehaviour
         Animator.SetBool("IsChuting", _isChuting);
         Animator.SetBool("IsFalling", _isJumpFalling);
         Animator.SetBool("IsWalking", isRunning);
+        Animator.SetBool("CanClimb", canClimb);
 
     }
     #endregion
 
+    #region LedgeClimb
+    private void CheckForLedge()
+    {
+        if (ledgeDetected && canGrabLedge)
+        {
+            _isChuting = false;
+            IsJumping = false;
+            canGrabLedge = false;
+
+            Vector2 ledgePos = GetComponentInChildren<Ledge_Detection>().transform.position;
+
+            climbBegunPos = ledgePos + offset1;
+            climbOverPos = ledgePos + offset2;
+
+            canClimb = true;
+        }
+
+        if (canClimb)
+        {
+            transform.position = climbBegunPos;
+
+            //Invoke("LedgeClimbOver", 1f);
+        }
+    }
+
+    public void LedgeClimbOver()
+    {
+        Debug.Log("Climbing");
+        canClimb = false;
+        transform.position = climbOverPos;
+        Invoke("AllowLedgeGrab", 1f);
+    }
+    private void AllowLedgeGrab() => canGrabLedge = true;
+
+    #endregion
 
     #region EDITOR METHODS
     private void OnDrawGizmosSelected()
