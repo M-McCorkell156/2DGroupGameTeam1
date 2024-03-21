@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: ae51326b4f328fa49b455865ae5adf95
+<<<<<<<< HEAD:Assets/_ProjectFIles/Coding/Scripts/CheckpointSystem.cs.meta
+guid: 31bbd1221d0b16b41aab6da329a77727
+========
+guid: 67ab5288981c7444dbd46ac6a1682fc1
+>>>>>>>> Matt---Meat:Assets/_ProjectFIles/Coding/Scripts/New Movement Scripts/Player_Behaviour-Matt.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

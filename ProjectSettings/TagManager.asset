@@ -4,19 +4,22 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Sticky
   - Ground
-  - Debris
+  - Checkpoint
+  - Death
+  - SlowDown
   - Sciaphilla
   - StickyRoof
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - RoofLayer
   - Water
   - UI
   - GroundLayer
-  - StickyRoof
+  - 
   - 
   - 
   - 

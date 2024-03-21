@@ -8,6 +8,9 @@ public class Player_Behaviour : MonoBehaviour
     public Player_Behaviour_Data Data;
 
     #region Variables
+
+    public Animator Animator { get; private set; }
+    private bool isRunning;
     public Rigidbody2D RB { get; private set; }
     public bool IsFacingRight { get; private set; }
     public bool IsJumping { get; private set; }
@@ -46,6 +49,7 @@ public class Player_Behaviour : MonoBehaviour
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -68,7 +72,17 @@ public class Player_Behaviour : MonoBehaviour
         _moveInput.y = Input.GetAxisRaw("Vertical");
 
         if (_moveInput.x != 0)
+        {
             CheckDirectionToFace(_moveInput.x > 0);
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
+           
+
+            
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
@@ -170,6 +184,8 @@ public class Player_Behaviour : MonoBehaviour
             SetGravityScale(Data.gravityScale);
         }
         #endregion
+
+        ControlAnimation();
     }
     private void FixedUpdate()
     {        
@@ -328,6 +344,17 @@ public class Player_Behaviour : MonoBehaviour
         return (_isJumpFalling || IsJumping); 
     }
 
+    #endregion
+
+    #region AnimatorController
+    private void ControlAnimation()
+    {
+        Animator.SetBool("IsJumping", IsJumping);
+        Animator.SetBool("IsChuting", _isChuting);
+        Animator.SetBool("IsFalling", _isJumpFalling);
+        Animator.SetBool("IsWalking", isRunning);
+
+    }
     #endregion
 
 
