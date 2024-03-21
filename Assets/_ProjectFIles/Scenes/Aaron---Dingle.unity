@@ -9395,7 +9395,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7386589, y: 1.5372045}
+  m_Offset: {x: 4.2966146, y: 4.534111}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9406,7 +9406,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.7894115, y: 3.156053}
+  m_Size: {x: 17.235285, y: 10.90073}
   m_EdgeRadius: 0
 --- !u!114 &479028067
 MonoBehaviour:
@@ -9571,7 +9571,7 @@ Transform:
   m_GameObject: {fileID: 480202592}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 424.5, y: 2.9, z: 0}
+  m_LocalPosition: {x: -86.85, y: 0.14, z: 0}
   m_LocalScale: {x: 0.15596552, y: 0.15596552, z: 0.31193104}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9596,7 +9596,7 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: bb6f4db46663088418233ca3cf314d61, type: 2}
   _groundCheckPoint: {fileID: 180843641}
   _groundCheckSize: {x: 0.49, y: 0.03}
-  _roofCheckPoint: {fileID: 0}
+  _roofCheckPoint: {fileID: 1835712561}
   _roofCheckSize: {x: 0.49, y: 0.03}
   _groundLayer:
     serializedVersion: 2

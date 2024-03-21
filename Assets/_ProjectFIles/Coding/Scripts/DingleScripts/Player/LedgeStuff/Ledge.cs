@@ -55,8 +55,9 @@ public class Ledge : MonoBehaviour
         Debug.Log("Climbing");
         canClimb = false;
         transform.position = climbOverPos;
-        canGrabLedge = true;
+        Invoke("AllowLedgeGrab", 1f);
     }
+    private void AllowLedgeGrab() => canGrabLedge = true;
 
     //Something else to do with event animation thing
 }
