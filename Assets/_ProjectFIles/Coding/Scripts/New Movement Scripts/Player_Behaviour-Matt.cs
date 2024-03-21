@@ -286,12 +286,12 @@ public class Player_Behaviour : MonoBehaviour
         #region Stickig 
         if (_isStickng)
         {
+            SetGravityScale(0);
+            //Debug.Log("Sticking");
+
 
         }
-        else
-        {
 
-        }
         #endregion
 
         //Calculate difference between current velocity and desired velocity
