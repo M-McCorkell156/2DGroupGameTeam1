@@ -9424,7 +9424,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  player: {fileID: 480202601}
+  player: {fileID: 480202599}
 --- !u!1 &480202592
 GameObject:
   m_ObjectHideFlags: 0
@@ -9439,7 +9439,6 @@ GameObject:
   - component: {fileID: 480202594}
   - component: {fileID: 480202599}
   - component: {fileID: 480202600}
-  - component: {fileID: 480202601}
   - component: {fileID: 480202602}
   m_Layer: 0
   m_Name: Player-Corto
@@ -9571,7 +9570,7 @@ Transform:
   m_GameObject: {fileID: 480202592}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -86.85, y: 0.14, z: 0}
+  m_LocalPosition: {x: 431.7, y: 1.8, z: 0}
   m_LocalScale: {x: 0.15596552, y: 0.15596552, z: 0.31193104}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9604,6 +9603,9 @@ MonoBehaviour:
   _stickyRoofLayer:
     serializedVersion: 2
     m_Bits: 0
+  ledgeDetected: 0
+  offset1: {x: 0, y: 0}
+  offset2: {x: 0.5, y: 0.5}
 --- !u!114 &480202600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9617,21 +9619,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawn: {fileID: 152692591}
---- !u!114 &480202601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 480202592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf78274d2ffc56f40b8c9482214085b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ledgeDetected: 0
-  offset1: {x: -1, y: -1}
-  offset2: {x: 0.5, y: 0.5}
 --- !u!95 &480202602
 Animator:
   serializedVersion: 5

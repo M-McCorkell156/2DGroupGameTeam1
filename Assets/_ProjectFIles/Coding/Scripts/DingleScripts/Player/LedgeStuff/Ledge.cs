@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Ledge : MonoBehaviour
 {
+    #region LedgeStuff
+    [Header("Ledge Info")]
     [HideInInspector] public bool ledgeDetected;
 
-    [Header("Ledge Info")]
     [SerializeField] private Vector2 offset1;
     [SerializeField] private Vector2 offset2;
 
@@ -18,6 +19,7 @@ public class Ledge : MonoBehaviour
     private bool canClimb;
 
     private Animator animator;
+    #endregion
     //------------------------------------------\\
     private void Awake()
     {
@@ -45,12 +47,12 @@ public class Ledge : MonoBehaviour
         if (canClimb)
         {
             transform.position = climbBegunPos;
-            //Only because I don't have animations in
-            Invoke("LedgeClimbOver", 1f);
+            
+            //Invoke("LedgeClimbOver", 1f);
         }
     }
 
-    private void LedgeClimbOver()
+    public void LedgeClimbOver()
     {
         Debug.Log("Climbing");
         canClimb = false;
