@@ -9,11 +9,13 @@ TagManager:
   - Checkpoint
   - Death
   - SlowDown
+  - Sciaphilla
+  - StickyRoof
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - RoofLayer
   - Water
   - UI
   - GroundLayer
