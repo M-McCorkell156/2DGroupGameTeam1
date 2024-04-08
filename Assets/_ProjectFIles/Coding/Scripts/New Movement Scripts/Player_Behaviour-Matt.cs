@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player_Behaviour : MonoBehaviour
 {
@@ -8,20 +9,19 @@ public class Player_Behaviour : MonoBehaviour
     public Player_Behaviour_Data Data;
 
     #region Variables
-
-    public Animator Animator { get; private set; }
-    private bool isRunning;
     public Rigidbody2D RB { get; private set; }
     public bool IsFacingRight { get; private set; }
     public bool IsJumping { get; private set; }
 
+    //Locking
+    private bool lockMove;
     //Timers
     public float LastOnGroundTime { get; private set; }
 
     //Jump
     private bool _isJumpCut;
     private bool _isJumpFalling;
-    
+
     private Vector2 _moveInput;
     public float LastPressedJumpTime { get; private set; }
 
@@ -29,7 +29,7 @@ public class Player_Behaviour : MonoBehaviour
     private bool _isChuting;
 
     //Sticky roof 
-    private bool _isStickng; 
+    private bool _isStickng;
 
     [Header("Checks")]
     [SerializeField] private Transform _groundCheckPoint;
@@ -44,153 +44,175 @@ public class Player_Behaviour : MonoBehaviour
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _stickyRoofLayer;
+
+    [Space(5)]
+
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+
     #endregion
 
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
-        Animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
         SetGravityScale(Data.gravityScale);
         IsFacingRight = true;
+        lockMovement();
     }
 
     private void Update()
     {
-        #region TIMERS
-        LastOnGroundTime -= Time.deltaTime;
-
-
-        LastPressedJumpTime -= Time.deltaTime;
-        #endregion
-
-        #region INPUT HANDLER
-        _moveInput.x = Input.GetAxisRaw("Horizontal");
-        _moveInput.y = Input.GetAxisRaw("Vertical");
-
-        if (_moveInput.x != 0)
+        if (!lockMove)
         {
-            CheckDirectionToFace(_moveInput.x > 0);
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-        }
-           
+            #region TIMERS
+            LastOnGroundTime -= Time.deltaTime;
 
-            
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
-        {
-            OnJumpInput();
-        }
+            LastPressedJumpTime -= Time.deltaTime;
+            #endregion
 
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.J))
-        {
-            OnJumpUpInput();
-        }
-        #endregion
+            #region INPUT HANDLER
+            _moveInput.x = Input.GetAxisRaw("Horizontal");
+            _moveInput.y = Input.GetAxisRaw("Vertical");
 
-        #region COLLISION CHECKS
-        if (!IsJumping)
-        {
-            //Ground Check
-            if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping) //checks if set box overlaps with ground
+            if (_moveInput.x != 0)
+                CheckDirectionToFace(_moveInput.x > 0);
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
             {
-                LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
-                _isChuting = false;
+                OnJumpInput();
             }
-        }
 
-        if (Physics2D.OverlapBox(_roofCheckPoint.position,_roofCheckSize,0,_stickyRoofLayer))
-        {
-            _isStickng = true;
-        }
-        else
-        {
-            _isStickng = false;
-        }
-        #endregion
+            if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.J))
+            {
+                OnJumpUpInput();
+            }
 
-        #region JUMP CHECKS
-        if (RB.velocity.y < 0)
-        {
-            _isJumpFalling = true;           
-        }
-        if (IsJumping && RB.velocity.y < 0)
-        {
-            IsJumping = false;
-        }   
+            #endregion
 
-        if (LastOnGroundTime > 0 && !IsJumping)
-        {
-            _isJumpCut = false;
-
+            #region COLLISION CHECKS
             if (!IsJumping)
             {
-                _isJumpFalling = false;
+                //Ground Check
+                if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping) //checks if set box overlaps with ground
+                {
+                    LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
+                    _isChuting = false;
+                }
             }
-        }
-        //Jump
-        if (CanJump() && LastPressedJumpTime > 0)
-        {
-            IsJumping = true;
-            _isJumpCut = false;
-            _isJumpFalling = false;
-            Jump();
-        }
 
-        //Chute
-        if(CanChute() && LastPressedJumpTime > 0)
-        {
-            _isChuting = true;
-            IsJumping = false;
-        }
-        #endregion
+            if (Physics2D.OverlapBox(_roofCheckPoint.position, _roofCheckSize, 0, _stickyRoofLayer))
+            {
+                _isStickng = true;
+            }
+            else
+            {
+                _isStickng = false;
+            }
 
-        #region GRAVITY
-        //Higher gravity if we've released the jump input or are falling
+            #endregion
 
-        else if (RB.velocity.y < 0 && _moveInput.y < 0)
-        {
-            //Much higher gravity if holding down
-            SetGravityScale(Data.gravityScale * Data.fastFallGravityMult);
-            //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
-            RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFastFallSpeed));
-        }
-        else if (_isJumpCut)
-        {
-            //Higher gravity if jump button released
-            SetGravityScale(Data.gravityScale * Data.jumpCutGravityMult);
-            RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
-        }
-        else if ((IsJumping || _isJumpFalling) && Mathf.Abs(RB.velocity.y) < Data.jumpHangTimeThreshold)
-        {
-            SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
-        }
-        else if (RB.velocity.y < 0)
-        {
-            //Higher gravity if falling
-            SetGravityScale(Data.gravityScale * Data.fallGravityMult);
-            //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
-            RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
-        }
-        else
-        {
-            //Default gravity if standing on a platform or moving upwards
-            SetGravityScale(Data.gravityScale);
-        }
-        #endregion
+            #region JUMP CHECKS
+            if (RB.velocity.y < 0)
+            {
+                _isJumpFalling = true;
+            }
+            if (IsJumping && RB.velocity.y < 0)
+            {
+                IsJumping = false;
+            }
 
-        ControlAnimation();
+            if (LastOnGroundTime > 0 && !IsJumping)
+            {
+                _isJumpCut = false;
+
+                if (!IsJumping)
+                {
+                    _isJumpFalling = false;
+                }
+            }
+            //Chute
+            if (CanChute() && LastPressedJumpTime > 0)
+            {
+                _isChuting = true;
+            }
+
+            //Jump
+            if (CanJump() && LastPressedJumpTime > 0)
+            {
+                IsJumping = true;
+                _isJumpFalling = false;
+                Jump();
+            }
+
+            if (_isStickng && LastPressedJumpTime > 0)
+            {
+                _isStickng = false;
+                //Debug.Log("Stop Sticking");
+            }
+
+
+            #endregion
+
+            #region GRAVITY
+            //Higher gravity if we've released the jump input or are falling
+            if (_isStickng)
+            {
+                SetGravityScale(0);
+                //Debug.Log("Sticking");
+            }
+
+            else if (_isChuting)
+            {
+                SetGravityScale(Data.realChuteGravity);
+                //Debug.Log("Chuting");
+            }
+
+            else if (RB.velocity.y < 0 && !_isJumpCut)
+            {
+                //Much higher gravity if holding down
+                //Debug.Log("Button Hold dowm");
+                SetGravityScale(Data.gravityScale * Data.fastFallGravityMult);
+
+                //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
+                RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFastFallSpeed));
+            }
+            else if (_isJumpCut)
+            {
+                //Higher gravity if jump button released
+                //Debug.Log("Button Let go");
+
+                SetGravityScale(Data.gravityScale * Data.jumpCutGravityMult);
+                RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
+            }
+            else if ((IsJumping || _isJumpFalling) && Mathf.Abs(RB.velocity.y) < Data.jumpHangTimeThreshold)
+            {
+                SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
+            }
+            else if (RB.velocity.y < 0)
+            {
+                //Higher gravity if falling
+                Debug.Log("Falling");
+                SetGravityScale(Data.gravityScale * Data.fallGravityMult);
+                //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
+                RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
+            }
+            else
+            {
+                //Default gravity if standing on a platform or moving upwards
+                SetGravityScale(Data.gravityScale);
+            }
+            #endregion
+        }
     }
+
     private void FixedUpdate()
-    {        
-            Run(1);
+    {
+        Run(1);
     }
 
     #region INPUT CALLBACKS
@@ -203,7 +225,11 @@ public class Player_Behaviour : MonoBehaviour
     public void OnJumpUpInput()
     {
         if (CanJumpCut())
+        {
             _isJumpCut = true;
+            //Debug.Log("Can jump cut");
+        }
+
     }
     #endregion
 
@@ -211,6 +237,19 @@ public class Player_Behaviour : MonoBehaviour
     public void SetGravityScale(float scale)
     {
         RB.gravityScale = scale;
+    }
+
+    public void lockMovement()
+    {
+        //Debug.Log("lockmove");
+        _moveInput = Vector2.zero;
+        lockMove = true;
+    }
+    public void unlockMovement()
+    {
+        //Debug.Log("unlockmove");
+        _moveInput = Vector2.zero;
+        lockMove = false;
     }
     #endregion
 
@@ -253,28 +292,6 @@ public class Player_Behaviour : MonoBehaviour
         }
         #endregion
 
-        #region Chute
-        if (_isChuting)
-        {
-            RB.gravityScale = Data.realChuteGravity;
-        }
-        else
-        {
-            RB.gravityScale = Data.gravityScale;
-        }
-        #endregion
-
-        #region Stickig 
-        if (_isStickng)
-        {
-
-        }
-        else
-        {
-
-        }
-        #endregion
-
         //Calculate difference between current velocity and desired velocity
         float speedDif = targetSpeed - RB.velocity.x;
         //Calculate force along x-axis to apply to thr player
@@ -285,10 +302,10 @@ public class Player_Behaviour : MonoBehaviour
         RB.AddForce(movement * Vector2.right, ForceMode2D.Force);
 
         /*
-		 * For those interested here is what AddForce() will do
-		 * RB.velocity = new Vector2(RB.velocity.x + (Time.fixedDeltaTime  * speedDif * accelRate) / RB.mass, RB.velocity.y);
-		 * Time.fixedDeltaTime is by default in Unity 0.02 seconds equal to 50 FixedUpdate() calls per second
-		*/
+         * For those interested here is what AddForce() will do
+         * RB.velocity = new Vector2(RB.velocity.x + (Time.fixedDeltaTime  * speedDif * accelRate) / RB.mass, RB.velocity.y);
+         * Time.fixedDeltaTime is by default in Unity 0.02 seconds equal to 50 FixedUpdate() calls per second
+        */
     }
 
     private void Turn()
@@ -332,7 +349,7 @@ public class Player_Behaviour : MonoBehaviour
 
     private bool CanJump()
     {
-        return LastOnGroundTime > 0 && !IsJumping && !_isChuting;
+        return LastOnGroundTime > 0 && !IsJumping && !_isChuting && !_isStickng;
     }
 
     private bool CanJumpCut()
@@ -342,20 +359,9 @@ public class Player_Behaviour : MonoBehaviour
 
     private bool CanChute()
     {
-        return (_isJumpFalling || IsJumping); 
+        return ((_isJumpFalling || IsJumping) && !_isStickng);
     }
 
-    #endregion
-
-    #region AnimatorController
-    private void ControlAnimation()
-    {
-        Animator.SetBool("IsJumping", IsJumping);
-        Animator.SetBool("IsChuting", _isChuting);
-        Animator.SetBool("IsFalling", _isJumpFalling);
-        Animator.SetBool("IsWalking", isRunning);
-
-    }
     #endregion
 
 

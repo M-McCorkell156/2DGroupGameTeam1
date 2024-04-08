@@ -78,8 +78,10 @@ public class Player_Behaviour_Data : ScriptableObject
         //Calculate jumpForce using the formula (initialJumpVelocity = gravity * timeToJumpApex)
 
         jumpForce = Mathf.Abs(gravityStrength) * jumpTimeToApex;
+
         //Calculate Glide Speed
         realChuteGravity = chuteGravity / 10;
+
         #region Variable Ranges
         runAcceleration = Mathf.Clamp(runAcceleration, 0.01f, runMaxSpeed);
         runDecceleration = Mathf.Clamp(runDecceleration, 0.01f, runMaxSpeed);
