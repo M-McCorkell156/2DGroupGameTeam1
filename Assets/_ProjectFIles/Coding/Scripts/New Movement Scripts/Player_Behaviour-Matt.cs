@@ -31,6 +31,18 @@ public class Player_Behaviour : MonoBehaviour
     //Sticky roof 
     private bool _isStickng;
 
+    //Spawning/Dying
+    private GameObject SpawnPoint;
+
+    [SerializeField] private GameObject spawnPoint;
+    private Collider2D checkpointCollider;
+
+    //Pick Ups
+    private Collider2D pickUpname;
+
+
+
+
     [Header("Checks")]
     [SerializeField] private Transform _groundCheckPoint;
     //Size of groundCheck depends on the size of your character generally you want them slightly small than width (for ground) and height (for the wall check)
@@ -44,6 +56,11 @@ public class Player_Behaviour : MonoBehaviour
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _stickyRoofLayer;
+    [SerializeField] private LayerMask _deathLayer;
+    [SerializeField] private LayerMask _checkPointLayer;
+    [SerializeField] private LayerMask _pickUpLayer;
+
+
 
     [Space(5)]
 
@@ -55,6 +72,7 @@ public class Player_Behaviour : MonoBehaviour
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
+        SpawnPoint = GameObject.Find("Spawn_Area");
     }
 
     private void Start()
@@ -95,6 +113,7 @@ public class Player_Behaviour : MonoBehaviour
             #endregion
 
             #region COLLISION CHECKS
+
             if (!IsJumping)
             {
                 //Ground Check
@@ -104,7 +123,7 @@ public class Player_Behaviour : MonoBehaviour
                     _isChuting = false;
                 }
             }
-
+            //Sticking Check
             if (Physics2D.OverlapBox(_roofCheckPoint.position, _roofCheckSize, 0, _stickyRoofLayer))
             {
                 _isStickng = true;
@@ -114,6 +133,26 @@ public class Player_Behaviour : MonoBehaviour
                 _isStickng = false;
             }
 
+            //Death Check
+            if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _deathLayer))
+            {
+                Debug.Log("Die Time");
+                Death();
+                Destroy(gameObject);
+            }
+
+            //Checkpoint Check
+            if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer))
+            {
+                Debug.Log("Spawn time");
+                checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);             
+                SpawnPoint.transform.position = checkpointCollider.transform.position;        
+            }
+
+            if(Physics2D.OverlapBox(RB.position, RB.position, 0, _pickUpLayer))
+            {
+
+            }
             #endregion
 
             #region JUMP CHECKS
@@ -250,6 +289,22 @@ public class Player_Behaviour : MonoBehaviour
         //Debug.Log("unlockmove");
         _moveInput = Vector2.zero;
         lockMove = false;
+    }
+
+    public void Death()
+    {
+        //Put Death animation Here 
+        lockMovement();
+        //Fade Out maybe use method
+
+        Spawning();
+        //Fade In
+    }
+
+    public void Spawning()
+    {
+        RB.position = spawnPoint.transform.position;
+        unlockMovement();
     }
     #endregion
 
