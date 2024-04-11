@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Sticky
+  - StickyPickup
+  - ChutePickup
+  - ChaseStart
   layers:
   - Default
   - TransparentFX

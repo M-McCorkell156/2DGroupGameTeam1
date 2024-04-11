@@ -33,17 +33,22 @@ public class Player_Behaviour : MonoBehaviour
     private bool _haveSticky;
     private bool _isStickng;
 
-    //Spawning/Dying
-    private GameObject SpawnPoint;
-
-    [SerializeField] private GameObject spawnPoint;
-    private Collider2D checkpointCollider;
-
     //Pick Ups
     private Collider2D pickUpname;
 
+    [Space(5)]
 
+    [Header("Objects")]
 
+    //Spawning/Dying
+    private GameObject SpawnPoint;
+    [SerializeField] private GameObject spawnPoint;
+    private Collider2D checkpointCollider;
+
+    //Chase 
+    [SerializeField] private GameObject chaseEnemy;
+
+    [Space(5)]
 
     [Header("Checks")]
     [SerializeField] private Transform _groundCheckPoint;
@@ -150,22 +155,27 @@ public class Player_Behaviour : MonoBehaviour
                 //Debug.Log("Spawn time");
                 checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);
                 SpawnPoint.transform.position = checkpointCollider.transform.position;
+                if(checkpointCollider.tag == "")
+                {
+
+                }
             }
 
+            //Pickup Check
             if (Physics2D.OverlapBox(RB.position, RB.transform.localScale, 0, _pickUpLayer))
             {
-                Debug.Log("Pickup");
+                //Debug.Log("Pickup");
                 pickUpname = Physics2D.OverlapBox(RB.position, RB.transform.localScale, 0, _pickUpLayer);
                 if (pickUpname.tag == "StickyPickup")
                 {
                     _haveSticky = true;
-                    Debug.Log("Stick");
+                    //Debug.Log("Stick");
 
                 }
                 else if (pickUpname.tag == "ChutePickup")
                 {
                     _haveChute = true;
-                    Debug.Log("Chute");
+                    //Debug.Log("Chute");
 
                 }
             }
