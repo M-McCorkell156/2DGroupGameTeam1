@@ -19,7 +19,7 @@ public class SpawnPoint_Behaviour : MonoBehaviour
     {
         while (!Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer))
         {
-            Debug.Log("OBJ Fall");
+            //Debug.Log("OBJ Fall");
             this.transform.position = new Vector2(transform.position.x, transform.position.y - 0.1f);
         }
     }

@@ -26,9 +26,11 @@ public class Player_Behaviour : MonoBehaviour
     public float LastPressedJumpTime { get; private set; }
 
     //Chute
+    private bool _haveChute;
     private bool _isChuting;
 
     //Sticky roof 
+    private bool _haveSticky;
     private bool _isStickng;
 
     //Spawning/Dying
@@ -73,6 +75,8 @@ public class Player_Behaviour : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         SpawnPoint = GameObject.Find("Spawn_Area");
+        _haveSticky = false; 
+        _haveChute = false;
     }
 
     private void Start()
@@ -124,7 +128,7 @@ public class Player_Behaviour : MonoBehaviour
                 }
             }
             //Sticking Check
-            if (Physics2D.OverlapBox(_roofCheckPoint.position, _roofCheckSize, 0, _stickyRoofLayer))
+            if (Physics2D.OverlapBox(_roofCheckPoint.position, _roofCheckSize, 0, _stickyRoofLayer) && _haveSticky)
             {
                 _isStickng = true;
             }
@@ -136,22 +140,34 @@ public class Player_Behaviour : MonoBehaviour
             //Death Check
             if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _deathLayer))
             {
-                Debug.Log("Die Time");
+                //Debug.Log("Die Time");
                 Death();
-                Destroy(gameObject);
             }
 
             //Checkpoint Check
             if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer))
             {
-                Debug.Log("Spawn time");
-                checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);             
-                SpawnPoint.transform.position = checkpointCollider.transform.position;        
+                //Debug.Log("Spawn time");
+                checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);
+                SpawnPoint.transform.position = checkpointCollider.transform.position;
             }
 
-            if(Physics2D.OverlapBox(RB.position, RB.position, 0, _pickUpLayer))
+            if (Physics2D.OverlapBox(RB.position, RB.transform.localScale, 0, _pickUpLayer))
             {
+                Debug.Log("Pickup");
+                pickUpname = Physics2D.OverlapBox(RB.position, RB.transform.localScale, 0, _pickUpLayer);
+                if (pickUpname.tag == "StickyPickup")
+                {
+                    _haveSticky = true;
+                    Debug.Log("Stick");
 
+                }
+                else if (pickUpname.tag == "ChutePickup")
+                {
+                    _haveChute = true;
+                    Debug.Log("Chute");
+
+                }
             }
             #endregion
 
@@ -414,7 +430,7 @@ public class Player_Behaviour : MonoBehaviour
 
     private bool CanChute()
     {
-        return ((_isJumpFalling || IsJumping) && !_isStickng);
+        return ((_isJumpFalling || IsJumping) && !_isStickng && _haveChute);
     }
 
     #endregion
