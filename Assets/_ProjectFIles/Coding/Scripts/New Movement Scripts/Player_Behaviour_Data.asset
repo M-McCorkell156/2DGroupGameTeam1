@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player_Behaviour_Data
   m_EditorClassIdentifier: 
   gravityStrength: -16
-  gravityScale: 1.6309887
+  gravityScale: -1.3913044
   fallGravityMult: 20
   maxFallSpeed: 12
   fastFallGravityMult: 2

@@ -18090,7 +18090,8 @@ MonoBehaviour:
     m_Bits: 64
   _stickyRoofLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
+  animator: {fileID: 0}
 --- !u!70 &1089048828
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -18214,7 +18215,7 @@ Transform:
   m_GameObject: {fileID: 1089048823}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 234.4, y: -45.8, z: 0}
+  m_LocalPosition: {x: 29.1, y: -4.7, z: 0}
   m_LocalScale: {x: 0.15596552, y: 0.15596552, z: 0.31193104}
   m_ConstrainProportionsScale: 0
   m_Children:
