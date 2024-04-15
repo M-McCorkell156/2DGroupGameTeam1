@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_ProjectFIles/Coding/Scripts/OldScripts.meta
+guid: bca3dab67883a174288fdbeefe2d6a11
+========
 guid: 7a53ffe157ae3f145b509d6f80dcec6b
+>>>>>>>> Matt---Meat:Assets/_ProjectFIles/Coding/Scripts/New Movement Scripts.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
