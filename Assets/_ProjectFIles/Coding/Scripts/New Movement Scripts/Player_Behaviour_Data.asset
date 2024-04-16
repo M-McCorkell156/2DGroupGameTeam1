@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Player_Behaviour_Data
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   gravityStrength: -16
   gravityScale: -1.3913044
   fallGravityMult: 20
@@ -23,6 +24,8 @@ MonoBehaviour:
   runAcceleration: 0.6
   runAccelAmount: 3
 =======
+=======
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
   gravityStrength: -20
   gravityScale: -1.7391304
   fallGravityMult: 12
@@ -32,6 +35,9 @@ MonoBehaviour:
   runMaxSpeed: 8
   runAcceleration: 2
   runAccelAmount: 12.5
+<<<<<<< HEAD
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
+=======
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
   runDecceleration: 1
   runDeccelAmount: 6.25

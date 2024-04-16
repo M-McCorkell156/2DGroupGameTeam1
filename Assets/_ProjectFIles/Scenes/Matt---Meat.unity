@@ -125,6 +125,7 @@ NavMeshSettings:
   m_NavMeshData: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 --- !u!1 &2430168
 GameObject:
@@ -504,6 +505,13 @@ SceneRoots:
   m_Roots: []
 =======
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
+=======
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots: []
+=======
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 --- !u!1 &288052101
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,12 +595,16 @@ Transform:
 =======
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.76, y: 0.48, z: 0}
+<<<<<<< HEAD
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
+=======
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
   m_LocalScale: {x: 5.601238, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1268349088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!61 &288052104
 BoxCollider2D:
@@ -859,6 +871,8 @@ Transform:
   - {fileID: 2430170}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 =======
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 --- !u!1 &543390379
@@ -1194,6 +1208,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1922669030}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1 &777648004
 GameObject:
@@ -2255,6 +2270,8 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 =======
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
+=======
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 --- !u!1 &1701752174
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,7 +2354,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalPosition: {x: 7.16, y: -3.63, z: 0}
+=======
+  m_LocalPosition: {x: -4.44, y: -3.82, z: 0}
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 =======
   m_LocalPosition: {x: -4.44, y: -3.82, z: 0}
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
@@ -2429,6 +2450,7 @@ MonoBehaviour:
   _groundCheckSize: {x: 0.49, y: 0.03}
   _groundLayer:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
     m_Bits: 8
   _stickyRoofLayer:
@@ -2891,6 +2913,9 @@ CanvasRenderer:
 =======
     m_Bits: 64
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
+=======
+    m_Bits: 64
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 --- !u!1 &1906773169
 GameObject:
   m_ObjectHideFlags: 0
@@ -3028,6 +3053,7 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1 &1918967333
 GameObject:
@@ -3612,6 +3638,8 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 =======
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
+=======
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 --- !u!1 &2001707967
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,6 +3854,7 @@ SceneRoots:
   - {fileID: 1701752176}
   - {fileID: 288052103}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Matt---Meat
   - {fileID: 1581030603}
@@ -3837,6 +3866,8 @@ SceneRoots:
   - {fileID: 399181098}
   - {fileID: 1922669030}
   - {fileID: 1268349088}
+=======
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 =======
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 >>>>>>> Matt---Meat

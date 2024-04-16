@@ -31,6 +31,7 @@ public class Player_Behaviour : MonoBehaviour
 
     //Sticky roof 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private bool _haveSticky;
     private bool _isStickng;
 =======
@@ -53,6 +54,9 @@ public class Player_Behaviour : MonoBehaviour
     [SerializeField] private GameObject chaseEnemy;
 
     [Space(5)]
+=======
+    private bool _isStickng; 
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 
     [Header("Checks")]
     [SerializeField] private Transform _groundCheckPoint;
@@ -68,6 +72,7 @@ public class Player_Behaviour : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _stickyRoofLayer;
 <<<<<<< HEAD
+<<<<<<< HEAD
     [SerializeField] private LayerMask _deathLayer;
     [SerializeField] private LayerMask _checkPointLayer;
     [SerializeField] private LayerMask _pickUpLayer;
@@ -81,15 +86,21 @@ public class Player_Behaviour : MonoBehaviour
 
 =======
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
+=======
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
     #endregion
 
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
 <<<<<<< HEAD
+<<<<<<< HEAD
         SpawnPoint = GameObject.Find("Spawn_Area");
         _haveSticky = false; 
         _haveChute = false;
+=======
+        Animator = GetComponent<Animator>();
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 =======
         Animator = GetComponent<Animator>();
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
@@ -168,6 +179,7 @@ public class Player_Behaviour : MonoBehaviour
         {
             IsJumping = false;
         }   
+<<<<<<< HEAD
 
         if (LastOnGroundTime > 0 && !IsJumping)
         {
@@ -267,6 +279,15 @@ public class Player_Behaviour : MonoBehaviour
             if (!IsJumping)
             {
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
+=======
+
+        if (LastOnGroundTime > 0 && !IsJumping)
+        {
+            _isJumpCut = false;
+
+            if (!IsJumping)
+            {
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
                 _isJumpFalling = false;
             }
         }
@@ -348,6 +369,7 @@ public class Player_Behaviour : MonoBehaviour
         RB.gravityScale = scale;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public void lockMovement()
     {
@@ -377,6 +399,8 @@ public class Player_Behaviour : MonoBehaviour
         RB.position = spawnPoint.transform.position;
         unlockMovement();
     }
+=======
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 =======
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
     #endregion
@@ -510,7 +534,11 @@ public class Player_Behaviour : MonoBehaviour
     private bool CanChute()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return ((_isJumpFalling || IsJumping) && !_isStickng && _haveChute);
+=======
+        return (_isJumpFalling || IsJumping); 
+>>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
 =======
         return (_isJumpFalling || IsJumping); 
 >>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
