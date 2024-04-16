@@ -9,6 +9,10 @@ TagManager:
   - StickyPickup
   - ChutePickup
   - ChaseStart
+  - Sciaphilla
+  - StickyRoof
+  - UnClimb
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

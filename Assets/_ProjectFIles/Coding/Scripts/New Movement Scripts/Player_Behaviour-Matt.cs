@@ -81,15 +81,15 @@ public class Player_Behaviour : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         SpawnPoint = GameObject.Find("Spawn_Area");
-        _haveSticky = false;
-        _haveChute = false;
+        _haveSticky = true;
+        _haveChute = true;
     }
 
     private void Start()
     {
         SetGravityScale(Data.gravityScale);
         IsFacingRight = true;
-        lockMovement();
+        //lockMovement();
     }
 
     private void Update()
@@ -153,10 +153,10 @@ public class Player_Behaviour : MonoBehaviour
             //Checkpoint Check
             if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer))
             {
-                //Debug.Log("Spawn time");
+                Debug.Log("Spawn time");
                 checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);
                 SpawnPoint.transform.position = checkpointCollider.transform.position;
-                if (checkpointCollider.tag == "Chase")
+                if (checkpointCollider.tag == "ChaseStart")
                 {
                     //Debug.Log("Chase");
                     chaseEnemy.GetComponent<Chase_Scene_Manager>().BeginChase();

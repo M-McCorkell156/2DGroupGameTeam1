@@ -12,47 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b697b7f633dc1eb4ba7fe67dff667342, type: 3}
   m_Name: Player_Behaviour_Data
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  gravityStrength: -16
-  gravityScale: -1.3913044
-  fallGravityMult: 20
-  maxFallSpeed: 12
-  fastFallGravityMult: 2
-  maxFastFallSpeed: 12
-  runMaxSpeed: 10
-  runAcceleration: 0.6
-  runAccelAmount: 3
-=======
-=======
->>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
   gravityStrength: -20
   gravityScale: -1.7391304
-  fallGravityMult: 12
-  maxFallSpeed: 15
-  fastFallGravityMult: 10
-  maxFastFallSpeed: 9
-  runMaxSpeed: 8
+  fallGravityMult: 20
+  maxFallSpeed: 12
+  fastFallGravityMult: 1.5
+  maxFastFallSpeed: 12
+  runMaxSpeed: 10
   runAcceleration: 2
-  runAccelAmount: 12.5
-<<<<<<< HEAD
->>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
-=======
->>>>>>> parent of 50e4ad7 (Merge branch 'Matt---Meat' into Natan---Minx)
-  runDecceleration: 1
-  runDeccelAmount: 6.25
-  accelInAir: 0.264
-  deccelInAir: 0.264
+  runAccelAmount: 10
+  runDecceleration: 0.9
+  runDeccelAmount: 4.5
+  accelInAir: 0.365
+  deccelInAir: 0.296
   doConserveMomentum: 1
   jumpHeight: 10
   jumpTimeToApex: 1
   jumpForce: 20
-  jumpCutGravityMult: 5
-  jumpHangGravityMult: 0.434
-  jumpHangTimeThreshold: 5
+  jumpCutGravityMult: 1.24
+  jumpHangGravityMult: 1
+  jumpHangTimeThreshold: 1
   jumpHangAccelerationMult: 1
   jumpHangMaxSpeedMult: 1
-  chuteGravity: -2
-  realChuteGravity: -0.2
+  chuteGravity: -3
+  realChuteGravity: -0.3
   coyoteTime: 0.058
   jumpInputBufferTime: 0.201
