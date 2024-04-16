@@ -12,7 +12,7 @@ public class Player_Behaviour_Data : ScriptableObject
     [HideInInspector] public float gravityStrength; //Downwards force (gravity) needed for the desired jumpHeight and jumpTimeToApex.
     [Space(5)]
     public float gravityScale; //Strength of the player's gravity as a multiplier of gravity (set in ProjectSettings/Physics2D).
-                                                 //Also the value the player's rigidbody2D.gravityScale is set to.
+                               //Also the value the player's rigidbody2D.gravityScale is set to.
     public float fallGravityMult; //Multiplier to the player's gravityScale when falling.
     public float maxFallSpeed; //Maximum fall speed (terminal velocity) of the player when falling.
     [Space(5)]
@@ -86,5 +86,5 @@ public class Player_Behaviour_Data : ScriptableObject
         runAcceleration = Mathf.Clamp(runAcceleration, 0.01f, runMaxSpeed);
         runDecceleration = Mathf.Clamp(runDecceleration, 0.01f, runMaxSpeed);
         #endregion
-    }   
+    }
 }

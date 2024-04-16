@@ -156,6 +156,7 @@ public class Player_Behaviour : MonoBehaviour
                 //Debug.Log("Spawn time");
                 checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);
                 SpawnPoint.transform.position = checkpointCollider.transform.position;
+                //Chase scene 
                 if (checkpointCollider.tag == "Chase")
                 {
                     //Debug.Log("Chase");
@@ -325,6 +326,7 @@ public class Player_Behaviour : MonoBehaviour
         lockMovement();
         //Fade Out maybe use method
 
+        chaseEnemy.GetComponent<Chase_Scene_Manager>().ResetChase();
         Spawning();
         //Fade In
     }
