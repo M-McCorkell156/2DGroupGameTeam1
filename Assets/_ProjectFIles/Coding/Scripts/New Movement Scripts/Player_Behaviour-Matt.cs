@@ -13,6 +13,8 @@ public class Player_Behaviour : MonoBehaviour
     public bool IsFacingRight { get; private set; }
     public bool IsJumping { get; private set; }
 
+    private bool isRunning;
+
     //Locking
     private bool lockMove;
     //Timers
@@ -74,6 +76,21 @@ public class Player_Behaviour : MonoBehaviour
     [Header("Animator")]
     [SerializeField] private Animator animator;
 
+
+    #region LedgeStuff
+    [Header("Ledge Info")]
+    [HideInInspector] public bool ledgeDetected;
+
+    [SerializeField] private Vector2 offset1;
+    [SerializeField] private Vector2 offset2;
+
+    private Vector2 climbBegunPos;
+    private Vector2 climbOverPos;
+
+    private bool canGrabLedge = true;
+    private bool canClimb;
+
+    #endregion
     #endregion
 
     private void Awake()
@@ -81,14 +98,14 @@ public class Player_Behaviour : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         SpawnPoint = GameObject.Find("Spawn_Area");
         _haveSticky = false; 
-        _haveChute = false;
+        _haveChute = true; //set it to true in level 2.
     }
 
     private void Start()
     {
         SetGravityScale(Data.gravityScale);
         IsFacingRight = true;
-        lockMovement();
+        //lockMovement();
     }
 
     private void Update()
@@ -107,7 +124,14 @@ public class Player_Behaviour : MonoBehaviour
             _moveInput.y = Input.GetAxisRaw("Vertical");
 
             if (_moveInput.x != 0)
+            {
                 CheckDirectionToFace(_moveInput.x > 0);
+                isRunning = true;
+            }
+            else
+            {
+                isRunning = false;
+            }
 
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
             {
@@ -273,6 +297,8 @@ public class Player_Behaviour : MonoBehaviour
             }
             #endregion
         }
+        AnimationController();
+        CheckForLedge();
     }
 
     private void FixedUpdate()
@@ -463,4 +489,46 @@ public class Player_Behaviour : MonoBehaviour
     //Abilities
     //Climbing
 
+    #region Animations
+    private void AnimationController()
+    {
+        animator.SetBool("IsChuting", _isChuting);
+        animator.SetBool("IsJumping", IsJumping);
+        animator.SetBool("IsFalling", _isJumpFalling);
+        animator.SetBool("IsWalking", isRunning);
+        animator.SetBool("CanClimb", canClimb);
+    }
+    #endregion
+    #region Ledges
+    private void CheckForLedge()
+    {
+        if (ledgeDetected && canGrabLedge)
+        {
+            canGrabLedge = false;
+
+            Vector2 ledgePos = GetComponentInChildren<Ledge_Detection>().transform.position;
+
+            climbBegunPos = ledgePos + offset1;
+            climbOverPos = ledgePos + offset2;
+
+            canClimb = true;
+        }
+
+        if (canClimb)
+        {
+            transform.position = climbBegunPos;
+
+            //Invoke("LedgeClimbOver", 1f);
+        }
+    }
+    public void LedgeClimbOver()
+    {
+        Debug.Log("Climbing");
+        canClimb = false;
+        transform.position = climbOverPos;
+        Invoke("AllowLedgeGrab", 5f);
+    }
+    private void AllowLedgeGrab() => canGrabLedge = true;
+
+    #endregion
 }

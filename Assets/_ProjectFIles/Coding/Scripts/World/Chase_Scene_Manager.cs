@@ -17,7 +17,7 @@ public class Chase_Scene_Manager : MonoBehaviour
     {
         if (_isChasing)
         {
-            RB.AddForce
+            //RB.AddForce
         }
     }
 }

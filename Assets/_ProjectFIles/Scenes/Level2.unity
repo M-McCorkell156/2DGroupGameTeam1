@@ -4832,8 +4832,8 @@ Transform:
   m_GameObject: {fileID: 210178122}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 612.9209, y: -2.0341, z: 0}
-  m_LocalScale: {x: 179.54868, y: 28.111649, z: 1.1544}
+  m_LocalPosition: {x: 612.6909, y: -2.757, z: 0}
+  m_LocalScale: {x: 180.01549, y: 26.66671, z: 1.1544}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1698701023}
@@ -9570,7 +9570,7 @@ Transform:
   m_GameObject: {fileID: 480202592}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -87.56, y: -0.28, z: 0}
+  m_LocalPosition: {x: -89.27, y: -0.28, z: 0}
   m_LocalScale: {x: 0.15596552, y: 0.15596552, z: 0.31193104}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9578,6 +9578,7 @@ Transform:
   - {fileID: 479028064}
   - {fileID: 1296668176}
   - {fileID: 1835712561}
+  - {fileID: 1548607169}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &480202599
@@ -9593,6 +9594,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: bb6f4db46663088418233ca3cf314d61, type: 2}
+  spawnPoint: {fileID: 152692590}
+  chaseEnemy: {fileID: 0}
   _groundCheckPoint: {fileID: 180843641}
   _groundCheckSize: {x: 0.49, y: 0.03}
   _roofCheckPoint: {fileID: 1835712561}
@@ -9603,9 +9606,19 @@ MonoBehaviour:
   _stickyRoofLayer:
     serializedVersion: 2
     m_Bits: 8
+  _deathLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _checkPointLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _pickUpLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  animator: {fileID: 480202602}
   ledgeDetected: 0
   offset1: {x: 0, y: 0}
-  offset2: {x: 0.5, y: 0.5}
+  offset2: {x: 0.75, y: 0.5}
 --- !u!114 &480202600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31117,12 +31130,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548607167}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 572.3701, y: 1.7952688, z: 0}
+  m_LocalScale: {x: 6.411674, y: 6.411674, z: 3.205837}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 480202597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1551052853
 GameObject:
@@ -44832,7 +44845,6 @@ BoxCollider2D:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1548607169}
   - {fileID: 480202597}
   - {fileID: 1253992333}
   - {fileID: 1729421995}
