@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -298,6 +300,7 @@ public class Player_Behaviour : MonoBehaviour
             #endregion
         }
         AnimationController();
+        
         CheckForLedge();
     }
 
@@ -504,14 +507,13 @@ public class Player_Behaviour : MonoBehaviour
     {
         if (ledgeDetected && canGrabLedge)
         {
+            
             canGrabLedge = false;
 
             Vector2 ledgePos = GetComponentInChildren<Ledge_Detection>().transform.position;
 
             climbBegunPos = ledgePos + offset1;
             climbOverPos = ledgePos + offset2;
-
-            canClimb = true;
         }
 
         if (canClimb)
@@ -530,5 +532,13 @@ public class Player_Behaviour : MonoBehaviour
     }
     private void AllowLedgeGrab() => canGrabLedge = true;
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Twig") && (ledgeDetected && canGrabLedge))
+        {
+            canClimb = true;
+            Debug.Log("CANCLIMB");
+        }
+    }
     #endregion
 }
