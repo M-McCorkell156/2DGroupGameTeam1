@@ -6,7 +6,12 @@ public class CheckpointSystem : MonoBehaviour
 {
     
     [SerializeField] private Transform respawn;
+    private Animator animator;
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -20,8 +25,14 @@ public class CheckpointSystem : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Death"))
         {
-            transform.position = respawn.position;
+            animator.SetBool("Death", true);
         }
 
+    }
+    public void DeathEvent()
+    {
+        animator.SetBool("Death", false);
+        transform.position = respawn.position;
+        
     }
 }

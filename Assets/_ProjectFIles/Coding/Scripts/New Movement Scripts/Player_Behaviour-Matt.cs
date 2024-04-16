@@ -26,10 +26,29 @@ public class Player_Behaviour : MonoBehaviour
     public float LastPressedJumpTime { get; private set; }
 
     //Chute
+    private bool _haveChute;
     private bool _isChuting;
 
     //Sticky roof 
+    private bool _haveSticky;
     private bool _isStickng;
+
+    //Pick Ups
+    private Collider2D pickUpname;
+
+    [Space(5)]
+
+    [Header("Objects")]
+
+    //Spawning/Dying
+    private GameObject SpawnPoint;
+    [SerializeField] private GameObject spawnPoint;
+    private Collider2D checkpointCollider;
+
+    //Chase 
+    [SerializeField] private GameObject chaseEnemy;
+
+    [Space(5)]
 
     [Header("Checks")]
     [SerializeField] private Transform _groundCheckPoint;
@@ -44,6 +63,11 @@ public class Player_Behaviour : MonoBehaviour
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _stickyRoofLayer;
+    [SerializeField] private LayerMask _deathLayer;
+    [SerializeField] private LayerMask _checkPointLayer;
+    [SerializeField] private LayerMask _pickUpLayer;
+
+
 
     [Space(5)]
 
@@ -55,6 +79,9 @@ public class Player_Behaviour : MonoBehaviour
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
+        SpawnPoint = GameObject.Find("Spawn_Area");
+        _haveSticky = false; 
+        _haveChute = false;
     }
 
     private void Start()
@@ -95,6 +122,7 @@ public class Player_Behaviour : MonoBehaviour
             #endregion
 
             #region COLLISION CHECKS
+
             if (!IsJumping)
             {
                 //Ground Check
@@ -104,8 +132,8 @@ public class Player_Behaviour : MonoBehaviour
                     _isChuting = false;
                 }
             }
-
-            if (Physics2D.OverlapBox(_roofCheckPoint.position, _roofCheckSize, 0, _stickyRoofLayer))
+            //Sticking Check
+            if (Physics2D.OverlapBox(_roofCheckPoint.position, _roofCheckSize, 0, _stickyRoofLayer) && _haveSticky)
             {
                 _isStickng = true;
             }
@@ -114,6 +142,43 @@ public class Player_Behaviour : MonoBehaviour
                 _isStickng = false;
             }
 
+            //Death Check
+            if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _deathLayer))
+            {
+                //Debug.Log("Die Time");
+                Death();
+            }
+
+            //Checkpoint Check
+            if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer))
+            {
+                //Debug.Log("Spawn time");
+                checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);
+                SpawnPoint.transform.position = checkpointCollider.transform.position;
+                if(checkpointCollider.tag == "")
+                {
+
+                }
+            }
+
+            //Pickup Check
+            if (Physics2D.OverlapBox(RB.position, RB.transform.localScale, 0, _pickUpLayer))
+            {
+                //Debug.Log("Pickup");
+                pickUpname = Physics2D.OverlapBox(RB.position, RB.transform.localScale, 0, _pickUpLayer);
+                if (pickUpname.tag == "StickyPickup")
+                {
+                    _haveSticky = true;
+                    //Debug.Log("Stick");
+
+                }
+                else if (pickUpname.tag == "ChutePickup")
+                {
+                    _haveChute = true;
+                    //Debug.Log("Chute");
+
+                }
+            }
             #endregion
 
             #region JUMP CHECKS
@@ -251,6 +316,22 @@ public class Player_Behaviour : MonoBehaviour
         _moveInput = Vector2.zero;
         lockMove = false;
     }
+
+    public void Death()
+    {
+        //Put Death animation Here 
+        lockMovement();
+        //Fade Out maybe use method
+
+        Spawning();
+        //Fade In
+    }
+
+    public void Spawning()
+    {
+        RB.position = spawnPoint.transform.position;
+        unlockMovement();
+    }
     #endregion
 
     //MOVEMENT METHODS
@@ -359,7 +440,7 @@ public class Player_Behaviour : MonoBehaviour
 
     private bool CanChute()
     {
-        return ((_isJumpFalling || IsJumping) && !_isStickng);
+        return ((_isJumpFalling || IsJumping) && !_isStickng && _haveChute);
     }
 
     #endregion
