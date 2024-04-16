@@ -44,6 +44,7 @@ public class Player_Behaviour : MonoBehaviour
     private GameObject SpawnPoint;
     [SerializeField] private GameObject spawnPoint;
     private Collider2D checkpointCollider;
+    public float spawnTime;
 
     //Chase 
     [SerializeField] private GameObject chaseEnemy;
@@ -80,7 +81,7 @@ public class Player_Behaviour : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         SpawnPoint = GameObject.Find("Spawn_Area");
-        _haveSticky = false; 
+        _haveSticky = false;
         _haveChute = false;
     }
 
@@ -155,9 +156,10 @@ public class Player_Behaviour : MonoBehaviour
                 //Debug.Log("Spawn time");
                 checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);
                 SpawnPoint.transform.position = checkpointCollider.transform.position;
-                if(checkpointCollider.tag == "")
+                if (checkpointCollider.tag == "Chase")
                 {
-
+                    //Debug.Log("Chase");
+                    chaseEnemy.GetComponent<Chase_Scene_Manager>().BeginChase();
                 }
             }
 
@@ -329,8 +331,9 @@ public class Player_Behaviour : MonoBehaviour
 
     public void Spawning()
     {
-        RB.position = spawnPoint.transform.position;
-        unlockMovement();
+        RB.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + 2);
+        //Debug.Log("Spawn delay start");
+        StartCoroutine(SpawnDelay());
     }
     #endregion
 
@@ -463,4 +466,10 @@ public class Player_Behaviour : MonoBehaviour
     //Abilities
     //Climbing
 
+    private IEnumerator SpawnDelay()
+    {
+        yield return new WaitForSeconds(1);
+        //Debug.Log("Spawn delay done");
+        unlockMovement();
+    }
 }
