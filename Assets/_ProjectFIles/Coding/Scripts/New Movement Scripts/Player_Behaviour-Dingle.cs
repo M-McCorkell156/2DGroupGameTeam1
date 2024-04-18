@@ -509,7 +509,7 @@ public class Player_Behaviour : MonoBehaviour
         {
             
             canGrabLedge = false;
-
+            canClimb = true;
             Vector2 ledgePos = GetComponentInChildren<Ledge_Detection>().transform.position;
 
             climbBegunPos = ledgePos + offset1;
@@ -528,17 +528,17 @@ public class Player_Behaviour : MonoBehaviour
         Debug.Log("Climbing");
         canClimb = false;
         transform.position = climbOverPos;
-        Invoke("AllowLedgeGrab", 5f);
+        Invoke(nameof(AllowLedgeGrab), 5f);
     }
     private void AllowLedgeGrab() => canGrabLedge = true;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.gameObject.CompareTag("Twig") && (ledgeDetected && canGrabLedge))
-        {
-            canClimb = true;
-            Debug.Log("CANCLIMB");
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (!collision.gameObject.CompareTag("Twig") && (ledgeDetected && canGrabLedge))
+    //    {
+    //        canClimb = true;
+    //        Debug.Log("CANCLIMB");
+    //    }
+    //}
     #endregion
 }
