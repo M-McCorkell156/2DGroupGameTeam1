@@ -17,13 +17,13 @@ public class Ledge_Detection : MonoBehaviour
     {
         if (canDetect)
         {
-            //player.ledgeDetected = Physics2D.OverlapCircle(transform.position, radius, groundLayer);
+            player.ledgeDetected = Physics2D.OverlapCircle(transform.position, radius, groundLayer);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("GroundLayer") || collision.gameObject.CompareTag("UnClimb"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("GroundLayer"))
         {
             canDetect = false;
         }
