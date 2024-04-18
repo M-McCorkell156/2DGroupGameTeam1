@@ -1028,10 +1028,9 @@ GameObject:
   m_Component:
   - component: {fileID: 161231935}
   - component: {fileID: 161231934}
-  - component: {fileID: 161231933}
   - component: {fileID: 161231932}
   m_Layer: 6
-  m_Name: Rock (10)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1064,41 +1063,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &161231933
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 161231931}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0011450888, y: 0.072871506}
-  serializedVersion: 2
-  m_Radius: 0.42613044
 --- !u!212 &161231934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1139,7 +1103,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
@@ -1160,7 +1124,7 @@ Transform:
   m_GameObject: {fileID: 161231931}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 51.269997, y: -4.0400004, z: 1.2842513}
+  m_LocalPosition: {x: 50.65, y: -4, z: 1.2842513}
   m_LocalScale: {x: 6.1197, y: 7.01849, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1846,10 +1810,9 @@ GameObject:
   m_Component:
   - component: {fileID: 285701561}
   - component: {fileID: 285701560}
-  - component: {fileID: 285701559}
   - component: {fileID: 285701558}
   m_Layer: 6
-  m_Name: Rock (7)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1882,41 +1845,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &285701559
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285701557}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!212 &285701560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1957,7 +1885,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   m_FlipX: 0
@@ -1978,7 +1906,7 @@ Transform:
   m_GameObject: {fileID: 285701557}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 46.965683, y: -5.007999, z: 1.2842513}
+  m_LocalPosition: {x: 46.345688, y: -4.9679985, z: 1.2842513}
   m_LocalScale: {x: 3.9311998, y: 4.14247, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5904,10 +5832,9 @@ GameObject:
   m_Component:
   - component: {fileID: 966411111}
   - component: {fileID: 966411114}
-  - component: {fileID: 966411113}
   - component: {fileID: 966411112}
   m_Layer: 6
-  m_Name: Rock (10)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5922,7 +5849,7 @@ Transform:
   m_GameObject: {fileID: 966411110}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.14914776, w: 0.98881495}
-  m_LocalPosition: {x: 47.716156, y: -3.011067, z: 1.2842513}
+  m_LocalPosition: {x: 47.09616, y: -2.9710665, z: 1.2842513}
   m_LocalScale: {x: 4.509086, y: 3.7748, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5955,41 +5882,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &966411113
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966411110}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0020464796, y: -0.09647171}
-  serializedVersion: 2
-  m_Radius: 0.5060735
 --- !u!212 &966411114
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6030,7 +5922,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
   m_FlipX: 0
@@ -6931,10 +6823,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1153624200}
   - component: {fileID: 1153624203}
-  - component: {fileID: 1153624202}
   - component: {fileID: 1153624201}
   m_Layer: 6
-  m_Name: Rock (7)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6949,7 +6840,7 @@ Transform:
   m_GameObject: {fileID: 1153624199}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.14914776, w: 0.98881495}
-  m_LocalPosition: {x: 45.319397, y: -2.1979365, z: 1.2842513}
+  m_LocalPosition: {x: 44.6994, y: -2.157936, z: 1.2842513}
   m_LocalScale: {x: 4.351445, y: 3.8797393, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6982,41 +6873,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1153624202
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153624199}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.008413545, y: -0.023592122}
-  serializedVersion: 2
-  m_Radius: 0.48737887
 --- !u!212 &1153624203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7057,7 +6913,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
@@ -7245,8 +7101,8 @@ Transform:
   m_GameObject: {fileID: 1168631850}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.21915309, w: 0.97569054}
-  m_LocalPosition: {x: -6.2765, y: -9.0162, z: -0.019829284}
-  m_LocalScale: {x: 12.639579, y: 8.631896, z: 1}
+  m_LocalPosition: {x: -8.0865, y: -12.8421, z: -0.019829284}
+  m_LocalScale: {x: 12.639579, y: 17.097197, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2029686165}
@@ -8219,10 +8075,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1264245318}
   - component: {fileID: 1264245321}
-  - component: {fileID: 1264245320}
   - component: {fileID: 1264245319}
   m_Layer: 6
-  m_Name: Rock (24)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8237,7 +8092,7 @@ Transform:
   m_GameObject: {fileID: 1264245317}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.19055448, w: 0.98167664}
-  m_LocalPosition: {x: 40.6901, y: -2.9514513, z: 1.2842513}
+  m_LocalPosition: {x: 40.070107, y: -2.9114513, z: 1.2842513}
   m_LocalScale: {x: 4.509086, y: 3.7748, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8270,41 +8125,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1264245320
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264245317}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0020464796, y: -0.09647171}
-  serializedVersion: 2
-  m_Radius: 0.5060735
 --- !u!212 &1264245321
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8345,7 +8165,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
   m_FlipX: 0
@@ -8757,10 +8577,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1314798993}
   - component: {fileID: 1314798996}
-  - component: {fileID: 1314798995}
   - component: {fileID: 1314798994}
   m_Layer: 6
-  m_Name: Rock (11)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8775,7 +8594,7 @@ Transform:
   m_GameObject: {fileID: 1314798992}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.14914776, w: 0.98881495}
-  m_LocalPosition: {x: 39.198647, y: -3.3938794, z: 1.2842513}
+  m_LocalPosition: {x: 38.57865, y: -3.353879, z: 1.2842513}
   m_LocalScale: {x: 6.119699, y: 7.018486, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -8808,41 +8627,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1314798995
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314798992}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0011450888, y: 0.072871506}
-  serializedVersion: 2
-  m_Radius: 0.42613044
 --- !u!212 &1314798996
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8883,7 +8667,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
@@ -8904,8 +8688,8 @@ Transform:
   m_GameObject: {fileID: 995085990}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.1989726, w: 0.9800051}
-  m_LocalPosition: {x: -22.3892, y: -8.9521, z: -0.019829284}
-  m_LocalScale: {x: 13.826018, y: 8.415497, z: 1}
+  m_LocalPosition: {x: -20.6809, y: -12.9857, z: -0.019829284}
+  m_LocalScale: {x: 13.826018, y: 17.176027, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2029686165}
@@ -9044,10 +8828,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1372554627}
   - component: {fileID: 1372554630}
-  - component: {fileID: 1372554629}
   - component: {fileID: 1372554628}
   m_Layer: 6
-  m_Name: Rock (9)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9062,7 +8845,7 @@ Transform:
   m_GameObject: {fileID: 1372554626}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.14914776, w: 0.98881495}
-  m_LocalPosition: {x: 42.69905, y: -3.8380017, z: 1.2842513}
+  m_LocalPosition: {x: 42.079056, y: -3.7980013, z: 1.2842513}
   m_LocalScale: {x: 3.9312, y: 4.1424656, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9095,41 +8878,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1372554629
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372554626}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!212 &1372554630
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9170,7 +8918,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   m_FlipX: 0
@@ -9518,10 +9266,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1540446935}
   - component: {fileID: 1540446938}
-  - component: {fileID: 1540446937}
   - component: {fileID: 1540446936}
   m_Layer: 6
-  m_Name: Rock (20)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9536,7 +9283,7 @@ Transform:
   m_GameObject: {fileID: 1540446934}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.19055448, w: 0.98167664}
-  m_LocalPosition: {x: 38.37, y: -1.94, z: 1.2842513}
+  m_LocalPosition: {x: 37.750004, y: -1.8999996, z: 1.2842513}
   m_LocalScale: {x: 4.351445, y: 3.8797393, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9569,41 +9316,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1540446937
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540446934}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.008413545, y: -0.023592122}
-  serializedVersion: 2
-  m_Radius: 0.48737887
 --- !u!212 &1540446938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9644,7 +9356,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
@@ -9684,8 +9396,8 @@ Transform:
   m_GameObject: {fileID: 1564434945}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 130.5163, y: 4.7, z: -0.019829284}
-  m_LocalScale: {x: 26.755676, y: 7.995292, z: 1}
+  m_LocalPosition: {x: 130.6, y: 6.37, z: -0.019829284}
+  m_LocalScale: {x: 1.3421544, y: 1.2839239, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2029686165}
@@ -9749,18 +9461,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0042333007, y: 0.019765168}
+  m_Offset: {x: 0.017347336, y: -1.5367517}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 20, y: 10}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99244714, y: 0.96046966}
+  m_Size: {x: 20.025581, y: 6.9609556}
   m_EdgeRadius: 0
 --- !u!212 &1564434949
 SpriteRenderer:
@@ -9803,8 +9515,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.09371662, g: 0.735849, b: 0.27876443, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1f7df3fa73b359046bbd5b0479595fd4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -9855,10 +9567,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1570284402}
   - component: {fileID: 1570284401}
-  - component: {fileID: 1570284400}
   - component: {fileID: 1570284399}
   m_Layer: 6
-  m_Name: Rock (6)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9891,41 +9602,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1570284400
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570284398}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.008413545, y: -0.023592122}
-  serializedVersion: 2
-  m_Radius: 0.48737887
 --- !u!212 &1570284401
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9966,7 +9642,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
@@ -9987,7 +9663,7 @@ Transform:
   m_GameObject: {fileID: 1570284398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 56.41568, y: -1.4018989, z: 1.2842513}
+  m_LocalPosition: {x: 55.795685, y: -1.3618984, z: 1.2842513}
   m_LocalScale: {x: 4.35145, y: 3.87974, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10021,8 +9697,8 @@ Transform:
   m_GameObject: {fileID: 1593207443}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.00054186955, w: 0.99999994}
-  m_LocalPosition: {x: -15.9137, y: -11.8879, z: -0.019829284}
-  m_LocalScale: {x: 66.65867, y: 8.415497, z: 1}
+  m_LocalPosition: {x: 2.9472, y: -10.7492, z: -0.019829284}
+  m_LocalScale: {x: 1.4234372, y: 1.5013179, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2029686165}
@@ -10086,18 +9762,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004339367, y: 0.0034013093}
+  m_Offset: {x: -0.000091552734, y: 0.74427116}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 20, y: 10}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9926593, y: 0.9931974}
+  m_Size: {x: 20.004494, y: 2.4749174}
   m_EdgeRadius: 0
 --- !u!212 &1593207447
 SpriteRenderer:
@@ -10140,8 +9816,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.09371662, g: 0.735849, b: 0.27876443, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1f7df3fa73b359046bbd5b0479595fd4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10161,10 +9837,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1595938013}
   - component: {fileID: 1595938012}
-  - component: {fileID: 1595938011}
   - component: {fileID: 1595938010}
   m_Layer: 6
-  m_Name: Rock (9)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10197,41 +9872,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1595938011
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1595938009}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0020464796, y: -0.09647171}
-  serializedVersion: 2
-  m_Radius: 0.5060735
 --- !u!212 &1595938012
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10272,7 +9912,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
   m_FlipX: 0
@@ -10293,7 +9933,7 @@ Transform:
   m_GameObject: {fileID: 1595938009}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 57.675674, y: -3.571899, z: 1.2842513}
+  m_LocalPosition: {x: 57.05568, y: -3.5318985, z: 1.2842513}
   m_LocalScale: {x: 4.50909, y: 3.7747998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10313,7 +9953,7 @@ GameObject:
   - component: {fileID: 1629396714}
   - component: {fileID: 1629396715}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: Spawn_Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10503,8 +10143,8 @@ Transform:
   m_GameObject: {fileID: 1663639146}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.1159, y: -11.8, z: -0.019829284}
-  m_LocalScale: {x: 5.0506735, y: 7.995292, z: 1}
+  m_LocalPosition: {x: 27.1159, y: -12.7324, z: -0.019829284}
+  m_LocalScale: {x: 5.0506735, y: 9.859794, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2029686165}
@@ -10949,10 +10589,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1753899521}
   - component: {fileID: 1753899524}
-  - component: {fileID: 1753899523}
   - component: {fileID: 1753899522}
   m_Layer: 6
-  m_Name: Rock (22)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10967,7 +10606,7 @@ Transform:
   m_GameObject: {fileID: 1753899520}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.19055448, w: 0.98167664}
-  m_LocalPosition: {x: 35.6212, y: -3.3543215, z: 1.2842513}
+  m_LocalPosition: {x: 35.001205, y: -3.314321, z: 1.2842513}
   m_LocalScale: {x: 3.9312, y: 4.1424656, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11000,41 +10639,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1753899523
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753899520}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!212 &1753899524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11075,7 +10679,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   m_FlipX: 0
@@ -11856,10 +11460,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1934658685}
   - component: {fileID: 1934658684}
-  - component: {fileID: 1934658683}
   - component: {fileID: 1934658682}
   m_Layer: 6
-  m_Name: Rock (8)
+  m_Name: BACKGROUND Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11892,41 +11495,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1934658683
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934658681}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!212 &1934658684
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11967,7 +11535,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   m_FlipX: 0
@@ -11988,7 +11556,7 @@ Transform:
   m_GameObject: {fileID: 1934658681}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.9066679, w: 0.42184517}
-  m_LocalPosition: {x: 54.74568, y: -3.4318995, z: 1.2842513}
+  m_LocalPosition: {x: 54.125687, y: -3.391899, z: 1.2842513}
   m_LocalScale: {x: 3.9312003, y: 4.1424704, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12713,8 +12281,8 @@ Transform:
   m_GameObject: {fileID: 2029476398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.901816, y: -6.3914, z: -0.019829284}
-  m_LocalScale: {x: 7.5712204, y: 7.995292, z: 1}
+  m_LocalPosition: {x: -13.901816, y: -8.7073, z: -0.019829284}
+  m_LocalScale: {x: 7.5712204, y: 12.6269655, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2029686165}
