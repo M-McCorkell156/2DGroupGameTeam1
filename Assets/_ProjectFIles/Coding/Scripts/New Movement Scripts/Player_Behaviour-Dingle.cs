@@ -512,8 +512,16 @@ public class Player_Behaviour : MonoBehaviour
             canClimb = true;
             Vector2 ledgePos = GetComponentInChildren<Ledge_Detection>().transform.position;
 
-            climbBegunPos = ledgePos + offset1;
-            climbOverPos = ledgePos + offset2;
+            if (IsFacingRight)
+            {
+                climbBegunPos = ledgePos + offset1;
+                climbOverPos = ledgePos + offset2;
+            }
+            else
+            {
+                climbBegunPos = ledgePos + -offset1;
+                climbOverPos = ledgePos + -offset2;
+            }
         }
 
         if (canClimb)
