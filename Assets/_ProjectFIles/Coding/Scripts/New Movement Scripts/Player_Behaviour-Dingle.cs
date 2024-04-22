@@ -454,12 +454,19 @@ public class Player_Behaviour : MonoBehaviour
     public void CheckDirectionToFace(bool isMovingRight)
     {
         if (isMovingRight != IsFacingRight)
-            Turn();
+        {
+            if (canClimb == false)
+            {
+                Turn();
+            }
+        }
+            
+            
     }
 
     private bool CanJump()
     {
-        return LastOnGroundTime > 0 && !IsJumping && !_isChuting && !_isStickng;
+        return LastOnGroundTime > 0 && !IsJumping && !_isChuting && !_isStickng && !canClimb;
     }
 
     private bool CanJumpCut()
@@ -469,7 +476,7 @@ public class Player_Behaviour : MonoBehaviour
 
     private bool CanChute()
     {
-        return ((_isJumpFalling || IsJumping) && !_isStickng && _haveChute);
+        return ((_isJumpFalling || IsJumping) && !_isStickng && _haveChute && !canClimb);
     }
 
     #endregion
@@ -505,10 +512,12 @@ public class Player_Behaviour : MonoBehaviour
     #region Ledges
     private void CheckForLedge()
     {
+        
         if (ledgeDetected && canGrabLedge)
         {
             
             canGrabLedge = false;
+            
             canClimb = true;
             Vector2 ledgePos = GetComponentInChildren<Ledge_Detection>().transform.position;
 
@@ -536,7 +545,7 @@ public class Player_Behaviour : MonoBehaviour
         Debug.Log("Climbing");
         canClimb = false;
         transform.position = climbOverPos;
-        Invoke(nameof(AllowLedgeGrab), 5f);
+        Invoke(nameof(AllowLedgeGrab), 2f);
     }
     private void AllowLedgeGrab() => canGrabLedge = true;
 

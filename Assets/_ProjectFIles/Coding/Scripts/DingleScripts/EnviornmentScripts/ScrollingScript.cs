@@ -12,6 +12,7 @@ public class ScrollingScript : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private Transform followTarget;
     [SerializeField] private float speed;
+    [SerializeField] private float YOffset;
     
     Vector2 startingPosition;
     float startingZ;
@@ -44,7 +45,7 @@ public class ScrollingScript : MonoBehaviour
 
         //Changes position to follow player
         Vector2 newPosition = startingPosition + camMoveSinceStart * parallaxFactor * speed;
-        transform.position = new Vector3(followTarget.transform.position.x, newPosition.y + (followTarget.transform.position.y / 10f), startingZ);
+        transform.position = new Vector3(followTarget.transform.position.x, (newPosition.y + YOffset) + (followTarget.transform.position.y / 10f), startingZ);
 
         //updates material offset to scroll
         //offset += (newPosition.x / 10f);
