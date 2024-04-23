@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class Dialog_Behaviour : MonoBehaviour
 {
     public Rigidbody2D RB { get; private set; }
-    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask npcLayer;
     public GameObject playerObject;
     private bool _isTalking;
     private bool lockOnce;
     private bool nextLine;
 
-    public GameObject dialogPanel;
+    public Canvas dialogPanel;
     public Text dialogText;
     public string[] dialog;
     private int index;
@@ -26,7 +26,7 @@ public class Dialog_Behaviour : MonoBehaviour
     }
     private void Update()
     {
-        if (Physics2D.OverlapBox(RB.position, RB.transform.localScale, 0, playerLayer))
+        if (Physics2D.OverlapBox(playerObject.transform.position, playerObject.transform.localScale, 0, npcLayer))
         {
             _isTalking = true;
         }
@@ -35,6 +35,12 @@ public class Dialog_Behaviour : MonoBehaviour
             _isTalking = false;
             lockOnce = false;
             ZeroText();
+        }
+
+        if (dialogText.text == dialog[index])
+        {
+            Debug.Log("Once talk");
+            NextLine();
         }
     }
 
@@ -45,34 +51,38 @@ public class Dialog_Behaviour : MonoBehaviour
         {
             lockOnce = true;
             playerObject.GetComponent<Player_Behaviour>().lockMovement();
+            //Debug.Log("Lock");
         }
         //Talking
         else if (_isTalking && lockOnce)
         {
-            if (dialogPanel.activeInHierarchy)
+            if (!dialogPanel.enabled)
             {
-                ZeroText();
-            }
-            else
-            {
-                dialogPanel.SetActive(true);
+                //Debug.Log("enabled");
+                dialogPanel.enabled = true;
                 StartCoroutine(Typing());
             }
+            Debug.Log("Start Typing");
+            //StartCoroutine(Typing());
         }
 
         if (dialogText.text == dialog[index])
-        {
+        {           
+            Debug.Log("finish line");
             nextLine = true;
         }
     }
     public void NextLine()
     {
+        Debug.Log("next line");
+
         nextLine = false;
         if (index < dialog.Length - 1)
         {
+            Debug.Log("next index");
             index++;
             dialogText.text = "";
-            StartCoroutine(Typing());
+            //StartCoroutine(Typing());
         }
         else
         {
@@ -83,13 +93,14 @@ public class Dialog_Behaviour : MonoBehaviour
     {
         dialogText.text = "";
         index = 0;
-        dialogPanel.SetActive(false);
+        dialogPanel.enabled = false;
     }
     IEnumerator Typing()
     {
         foreach (char letter in dialog[index].ToCharArray())
         {
             dialogText.text += letter;
+            Debug.Log("talk");
             yield return new WaitForSeconds(wordSpeed);
         }
     }
