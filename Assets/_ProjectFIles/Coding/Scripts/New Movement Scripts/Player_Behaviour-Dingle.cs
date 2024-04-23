@@ -100,7 +100,7 @@ public class Player_Behaviour : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         SpawnPoint = GameObject.Find("Spawn_Area");
         _haveSticky = false; 
-        _haveChute = true; //set it to true in level 2.
+        _haveChute = false; //set it to true in level 2.
     }
 
     private void Start()
@@ -154,6 +154,7 @@ public class Player_Behaviour : MonoBehaviour
                 //Ground Check
                 if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping) //checks if set box overlaps with ground
                 {
+
                     LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
                     _isChuting = false;
                 }
@@ -200,6 +201,8 @@ public class Player_Behaviour : MonoBehaviour
                 }
                 else if (pickUpname.tag == "ChutePickup")
                 {
+                    
+                    Destroy(pickUpname.gameObject);
                     _haveChute = true;
                     //Debug.Log("Chute");
 

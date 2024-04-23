@@ -9,6 +9,10 @@ TagManager:
   - StickyPickup
   - ChutePickup
   - ChaseStart
+  - NotClimable
+  - SlowDown
+  - Checkpoint
+  - Death
   layers:
   - Default
   - TransparentFX
