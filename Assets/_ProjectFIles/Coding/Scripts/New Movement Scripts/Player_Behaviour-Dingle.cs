@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,8 +12,6 @@ public class Player_Behaviour : MonoBehaviour
     public Rigidbody2D RB { get; private set; }
     public bool IsFacingRight { get; private set; }
     public bool IsJumping { get; private set; }
-
-    private bool isRunning;
 
     //Locking
     private bool lockMove;
@@ -48,6 +44,7 @@ public class Player_Behaviour : MonoBehaviour
     private GameObject SpawnPoint;
     [SerializeField] private GameObject spawnPoint;
     private Collider2D checkpointCollider;
+    public float spawnTime;
 
     //Chase 
     [SerializeField] private GameObject chaseEnemy;
@@ -78,36 +75,21 @@ public class Player_Behaviour : MonoBehaviour
     [Header("Animator")]
     [SerializeField] private Animator animator;
 
-
-    #region LedgeStuff
-    [Header("Ledge Info")]
-    [HideInInspector] public bool ledgeDetected;
-
-    [SerializeField] private Vector2 offset1;
-    [SerializeField] private Vector2 offset2;
-
-    private Vector2 climbBegunPos;
-    private Vector2 climbOverPos;
-
-    private bool canGrabLedge = true;
-    private bool canClimb;
-
-    #endregion
     #endregion
 
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
         SpawnPoint = GameObject.Find("Spawn_Area");
-        _haveSticky = false; 
-        _haveChute = false; //set it to true in level 2.
+        _haveSticky = false;
+        _haveChute = false;
     }
 
     private void Start()
     {
         SetGravityScale(Data.gravityScale);
         IsFacingRight = true;
-        //lockMovement();
+        lockMovement();
     }
 
     private void Update()
@@ -126,14 +108,7 @@ public class Player_Behaviour : MonoBehaviour
             _moveInput.y = Input.GetAxisRaw("Vertical");
 
             if (_moveInput.x != 0)
-            {
                 CheckDirectionToFace(_moveInput.x > 0);
-                isRunning = true;
-            }
-            else
-            {
-                isRunning = false;
-            }
 
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
             {
@@ -154,7 +129,6 @@ public class Player_Behaviour : MonoBehaviour
                 //Ground Check
                 if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping) //checks if set box overlaps with ground
                 {
-
                     LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
                     _isChuting = false;
                 }
@@ -182,9 +156,11 @@ public class Player_Behaviour : MonoBehaviour
                 //Debug.Log("Spawn time");
                 checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);
                 SpawnPoint.transform.position = checkpointCollider.transform.position;
-                if(checkpointCollider.tag == "")
+                //Chase scene 
+                if (checkpointCollider.tag == "Chase")
                 {
-
+                    //Debug.Log("Chase");
+                    chaseEnemy.GetComponent<Chase_Scene_Manager>().BeginChase();
                 }
             }
 
@@ -201,8 +177,6 @@ public class Player_Behaviour : MonoBehaviour
                 }
                 else if (pickUpname.tag == "ChutePickup")
                 {
-                    
-                    Destroy(pickUpname.gameObject);
                     _haveChute = true;
                     //Debug.Log("Chute");
 
@@ -302,9 +276,6 @@ public class Player_Behaviour : MonoBehaviour
             }
             #endregion
         }
-        AnimationController();
-        
-        CheckForLedge();
     }
 
     private void FixedUpdate()
@@ -355,14 +326,16 @@ public class Player_Behaviour : MonoBehaviour
         lockMovement();
         //Fade Out maybe use method
 
+        chaseEnemy.GetComponent<Chase_Scene_Manager>().ResetChase();
         Spawning();
         //Fade In
     }
 
     public void Spawning()
     {
-        RB.position = spawnPoint.transform.position;
-        unlockMovement();
+        RB.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + 2);
+        //Debug.Log("Spawn delay start");
+        StartCoroutine(SpawnDelay());
     }
     #endregion
 
@@ -457,19 +430,12 @@ public class Player_Behaviour : MonoBehaviour
     public void CheckDirectionToFace(bool isMovingRight)
     {
         if (isMovingRight != IsFacingRight)
-        {
-            if (!canClimb)
-            {
-                Turn();
-            }
-        }
-            
-            
+            Turn();
     }
 
     private bool CanJump()
     {
-        return LastOnGroundTime > 0 && !IsJumping && !_isChuting && !_isStickng && !canClimb;
+        return LastOnGroundTime > 0 && !IsJumping && !_isChuting && !_isStickng;
     }
 
     private bool CanJumpCut()
@@ -479,7 +445,7 @@ public class Player_Behaviour : MonoBehaviour
 
     private bool CanChute()
     {
-        return ((_isJumpFalling || IsJumping) && !_isStickng && _haveChute && !canClimb);
+        return ((_isJumpFalling || IsJumping) && !_isStickng && _haveChute);
     }
 
     #endregion
@@ -502,61 +468,10 @@ public class Player_Behaviour : MonoBehaviour
     //Abilities
     //Climbing
 
-    #region Animations
-    private void AnimationController()
+    private IEnumerator SpawnDelay()
     {
-        animator.SetBool("IsChuting", _isChuting);
-        animator.SetBool("IsJumping", IsJumping);
-        animator.SetBool("IsFalling", _isJumpFalling);
-        animator.SetBool("IsWalking", isRunning);
-        animator.SetBool("CanClimb", canClimb);
+        yield return new WaitForSeconds(1);
+        //Debug.Log("Spawn delay done");
+        unlockMovement();
     }
-    #endregion
-    #region Ledges
-    private void CheckForLedge()
-    {
-        if (ledgeDetected && canGrabLedge)
-        {
-            
-            canGrabLedge = false;
-            canClimb = true;
-            Vector2 ledgePos = GetComponentInChildren<Ledge_Detection>().transform.position;
-
-            if (IsFacingRight)
-            {
-                climbBegunPos = ledgePos + offset1;
-                climbOverPos = ledgePos + offset2;
-            }
-            else
-            {
-                climbBegunPos = ledgePos + -offset1;
-                climbOverPos = ledgePos + -offset2;
-            }
-        }
-
-        if (canClimb)
-        {
-            transform.position = climbBegunPos;
-
-            //Invoke("LedgeClimbOver", 1f);
-        }
-    }
-    public void LedgeClimbOver()
-    {
-        Debug.Log("Climbing");
-        canClimb = false;
-        transform.position = climbOverPos;
-        Invoke(nameof(AllowLedgeGrab), 2f);
-    }
-    private void AllowLedgeGrab() => canGrabLedge = true;
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (!collision.gameObject.CompareTag("Twig") && (ledgeDetected && canGrabLedge))
-    //    {
-    //        canClimb = true;
-    //        Debug.Log("CANCLIMB");
-    //    }
-    //}
-    #endregion
 }
