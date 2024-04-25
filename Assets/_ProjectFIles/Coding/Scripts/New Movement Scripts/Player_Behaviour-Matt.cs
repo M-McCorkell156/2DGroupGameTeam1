@@ -45,6 +45,7 @@ public class Player_Behaviour : MonoBehaviour
     [SerializeField] private GameObject spawnPoint;
     private Collider2D checkpointCollider;
     public float spawnTime;
+    public GameObject nextSceneObj;
 
     //Chase 
     [SerializeField] private GameObject chaseEnemy;
@@ -161,6 +162,10 @@ public class Player_Behaviour : MonoBehaviour
                 {
                     //Debug.Log("Chase");
                     chaseEnemy.GetComponent<Chase_Scene_Manager>().BeginChase();
+                }
+                else if (checkpointCollider.tag == "NextScene")
+                {
+                    nextSceneObj.GetComponent<Scene_Manager>().LoadScene();
                 }
             }
 
