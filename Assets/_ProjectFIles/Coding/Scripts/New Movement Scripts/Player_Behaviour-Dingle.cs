@@ -13,6 +13,8 @@ public class Player_Behaviour : MonoBehaviour
     public bool IsFacingRight { get; private set; }
     public bool IsJumping { get; private set; }
 
+    private bool isRunning;
+
     //Locking
     private bool lockMove;
     //Timers
@@ -41,7 +43,7 @@ public class Player_Behaviour : MonoBehaviour
     [Header("Objects")]
 
     //Spawning/Dying
-    private GameObject SpawnPoint;
+    //private GameObject SpawnPoint;
     [SerializeField] private GameObject spawnPoint;
     private Collider2D checkpointCollider;
     public float spawnTime;
@@ -75,12 +77,29 @@ public class Player_Behaviour : MonoBehaviour
     [Header("Animator")]
     [SerializeField] private Animator animator;
 
+
+    #region LedgeStuff
+    [Header("Ledge Info")]
+    [HideInInspector] public bool ledgeDetected;
+
+    [SerializeField] private Vector2 offset1;
+    [SerializeField] private Vector2 offset2;
+
+    private Vector2 climbBegunPos;
+    private Vector2 climbOverPos;
+
+    private bool canGrabLedge = true;
+    private bool canClimb;
+
+    #endregion
+
+
     #endregion
 
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
-        SpawnPoint = GameObject.Find("Spawn_Area");
+        //SpawnPoint = GameObject.Find("Spawn_Area");
         _haveSticky = false;
         _haveChute = false;
     }
@@ -108,7 +127,15 @@ public class Player_Behaviour : MonoBehaviour
             _moveInput.y = Input.GetAxisRaw("Vertical");
 
             if (_moveInput.x != 0)
+            {
                 CheckDirectionToFace(_moveInput.x > 0);
+                isRunning = true;
+            }
+            else
+            {
+                isRunning = false;
+            }
+
 
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
             {
@@ -155,7 +182,7 @@ public class Player_Behaviour : MonoBehaviour
             {
                 //Debug.Log("Spawn time");
                 checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);
-                SpawnPoint.transform.position = checkpointCollider.transform.position;
+                spawnPoint.transform.position = checkpointCollider.transform.position;
                 //Chase scene 
                 if (checkpointCollider.tag == "Chase")
                 {
@@ -172,12 +199,14 @@ public class Player_Behaviour : MonoBehaviour
                 if (pickUpname.tag == "StickyPickup")
                 {
                     _haveSticky = true;
+                    Destroy(pickUpname.gameObject);
                     //Debug.Log("Stick");
 
                 }
                 else if (pickUpname.tag == "ChutePickup")
                 {
                     _haveChute = true;
+                    Destroy(pickUpname.gameObject);
                     //Debug.Log("Chute");
 
                 }
@@ -275,6 +304,10 @@ public class Player_Behaviour : MonoBehaviour
                 SetGravityScale(Data.gravityScale);
             }
             #endregion
+
+            AnimationController();
+
+            CheckForLedge();
         }
     }
 
@@ -430,12 +463,19 @@ public class Player_Behaviour : MonoBehaviour
     public void CheckDirectionToFace(bool isMovingRight)
     {
         if (isMovingRight != IsFacingRight)
-            Turn();
+        {
+            if (!canClimb)
+            {
+                Turn();
+            }
+        }
+
+
     }
 
     private bool CanJump()
     {
-        return LastOnGroundTime > 0 && !IsJumping && !_isChuting && !_isStickng;
+        return LastOnGroundTime > 0 && !IsJumping && !_isChuting && !_isStickng && !canClimb;
     }
 
     private bool CanJumpCut()
@@ -445,7 +485,7 @@ public class Player_Behaviour : MonoBehaviour
 
     private bool CanChute()
     {
-        return ((_isJumpFalling || IsJumping) && !_isStickng && _haveChute);
+        return ((_isJumpFalling || IsJumping) && !_isStickng && _haveChute && !canClimb);
     }
 
     #endregion
@@ -474,4 +514,63 @@ public class Player_Behaviour : MonoBehaviour
         //Debug.Log("Spawn delay done");
         unlockMovement();
     }
+
+    #region Animations
+    private void AnimationController()
+    {
+        animator.SetBool("IsChuting", _isChuting);
+        animator.SetBool("IsJumping", IsJumping);
+        animator.SetBool("IsFalling", _isJumpFalling);
+        animator.SetBool("IsWalking", isRunning);
+        animator.SetBool("CanClimb", canClimb);
+    }
+    #endregion
+    #region Ledges
+    private void CheckForLedge()
+    {
+        if (ledgeDetected && canGrabLedge)
+        {
+
+            canGrabLedge = false;
+            canClimb = true;
+            Vector2 ledgePos = GetComponentInChildren<Ledge_Detection>().transform.position;
+
+            if (IsFacingRight)
+            {
+                climbBegunPos = ledgePos + offset1;
+                climbOverPos = ledgePos + offset2;
+            }
+            else
+            {
+                climbBegunPos = ledgePos + -offset1;
+                climbOverPos = ledgePos + -offset2;
+            }
+        }
+
+        if (canClimb)
+        {
+            transform.position = climbBegunPos;
+
+            //Invoke("LedgeClimbOver", 1f);
+        }
+    }
+    public void LedgeClimbOver()
+    {
+        Debug.Log("Climbing");
+        canClimb = false;
+        transform.position = climbOverPos;
+        Invoke(nameof(AllowLedgeGrab), 2f);
+    }
+    private void AllowLedgeGrab() => canGrabLedge = true;
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (!collision.gameObject.CompareTag("Twig") && (ledgeDetected && canGrabLedge))
+    //    {
+    //        canClimb = true;
+    //        Debug.Log("CANCLIMB");
+    //    }
+    //}
+    #endregion
+
 }
