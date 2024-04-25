@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - ChutePickup
+  - Sticky
+  - Checkpoint
+  - Chase
+  - StickyPickup
   layers:
   - Default
   - TransparentFX
@@ -13,7 +18,7 @@ TagManager:
   - Water
   - UI
   - GroundLayer
-  - 
+  - Player
   - 
   - 
   - 
