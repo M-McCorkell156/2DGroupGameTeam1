@@ -11,6 +11,8 @@ public class Ledge_Detection : MonoBehaviour
 
     [SerializeField] private Player_Behaviour player;
 
+    [HideInInspector] public bool ledgeDetected;
+
     private bool canDetect;
 
     private void Update()
