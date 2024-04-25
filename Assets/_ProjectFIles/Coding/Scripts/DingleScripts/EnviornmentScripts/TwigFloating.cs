@@ -26,22 +26,20 @@ public class TwigFloating : MonoBehaviour
         if (transform.position == pointA.position)
         {
             transform.position = pointC.position;
-            //StartCoroutine(Waiting(gameObject));
+            StartCoroutine(Waiting(gameObject));
 
 
         }
         if (transform.position == pointB.position)
         {
             //trying to make platform wait at Point B for a couple seconds
-            speed = 0;
-            Invoke(nameof(ReturnToSpeed), waitTime);
-            
+            StartCoroutine(Waiting(gameObject));
         }
 
         
 
     }
-    private void ReturnToSpeed() => speed = twigSpeed;
+
     
 
     
@@ -66,14 +64,16 @@ public class TwigFloating : MonoBehaviour
         }
 
     }
-    //IEnumerator Waiting(GameObject twig)
-    //{
-    //    yield return new WaitForSeconds(3f);
-    //    speed = 0f;
+    IEnumerator Waiting(GameObject twig)
+    {
+        yield return new WaitForSeconds(1.6f);
+        speed = 0f;
+        Debug.Log("Waiting");
+        yield return new WaitForSeconds(waitTime);
+        speed = twigSpeed;
+        //Not waiting for some reason
         
-    //    yield return new WaitForSeconds(waitTime);
-    //    speed = twigSpeed;
-        
-    //}
+        //My attempt at getting it to wait
+    }
 
 }

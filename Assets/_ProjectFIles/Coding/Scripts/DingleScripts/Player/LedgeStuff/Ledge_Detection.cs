@@ -17,7 +17,7 @@ public class Ledge_Detection : MonoBehaviour
 
     private void Update()
     {
-        if (canDetect == true)
+        if (canDetect)
         {
             player.ledgeDetected = Physics2D.OverlapCircle(transform.position, radius, groundLayer);
         }
@@ -25,18 +25,15 @@ public class Ledge_Detection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.gameObject.layer == LayerMask.NameToLayer("GroundLayer") && collision.gameObject.tag == "NotClimable")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("GroundLayer"))
         {
-            //Debug.Log(collision.gameObject.name);
             canDetect = false;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("GroundLayer") && collision.gameObject.tag == "NotClimable")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("GroundLayer"))
         {
-            Debug.Log(collision.gameObject.name);
             canDetect = true;
         }
     }
