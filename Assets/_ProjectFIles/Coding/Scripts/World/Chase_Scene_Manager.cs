@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Chase_Scene_Manager : MonoBehaviour
 {
-    private bool _isChasing; 
+    private bool _isChasing;
 
     public GameObject[] target;
+    public GameObject startPoint;
     public GameObject endPoint;
     [Space(5)]
     private int current;
@@ -19,6 +20,17 @@ public class Chase_Scene_Manager : MonoBehaviour
         //Debug.Log("Begin Chase");
     }
 
+    public void ResetChase()
+    {
+        if (_isChasing)
+
+        {
+            _isChasing = false;
+            transform.position = startPoint.transform.position;
+        }
+
+    }
+
     private void FixedUpdate()
     {
         if (_isChasing)
@@ -29,7 +41,7 @@ public class Chase_Scene_Manager : MonoBehaviour
             }
             else if (Vector3.Distance(target[current].transform.position, transform.position) < 1)
             {
-                current ++;
+                current++;
                 if (current >= target.Length)
                 {
                     current = 0;
