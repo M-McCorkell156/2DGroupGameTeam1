@@ -24,7 +24,7 @@ public class Pause_Manager_Matt : MonoBehaviour
     void Start()
     {
         //Debug.Log("Start Pause");
-        player = GameObject.Find("Player_Corto");
+        //player = GameObject.Find("Player_Corto");
         canvas = GetComponent<Canvas>();
         group.alpha = 0f;
         fadeIn = true;

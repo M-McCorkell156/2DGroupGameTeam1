@@ -13,6 +13,8 @@ public class Player_Behaviour : MonoBehaviour
     public bool IsFacingRight { get; private set; }
     public bool IsJumping { get; private set; }
 
+    private bool isDead;
+
     private bool isRunning;
 
     //Locking
@@ -43,7 +45,7 @@ public class Player_Behaviour : MonoBehaviour
     [Header("Objects")]
 
     //Spawning/Dying
-    //private GameObject SpawnPoint;
+    private GameObject SpawnPoint;
     [SerializeField] private GameObject spawnPoint;
     private Collider2D checkpointCollider;
     public float spawnTime;
@@ -99,7 +101,7 @@ public class Player_Behaviour : MonoBehaviour
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
-        //SpawnPoint = GameObject.Find("Spawn_Area");
+        SpawnPoint = GameObject.Find("Spawn_Area");
         _haveSticky = false;
         _haveChute = false;
     }
@@ -182,13 +184,13 @@ public class Player_Behaviour : MonoBehaviour
             {
                 //Debug.Log("Spawn time");
                 checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);
-                spawnPoint.transform.position = checkpointCollider.transform.position;
+                SpawnPoint.transform.position = checkpointCollider.transform.position;
                 //Chase scene 
-                if (checkpointCollider.tag == "Chase")
-                {
-                    //Debug.Log("Chase");
-                    chaseEnemy.GetComponent<Chase_Scene_Manager>().BeginChase();
-                }
+                //if (checkpointCollider.tag == "Chase")
+                //{
+                //    //Debug.Log("Chase");
+                //    chaseEnemy.GetComponent<Chase_Scene_Manager>().BeginChase();
+                //}
             }
 
             //Pickup Check
@@ -206,8 +208,8 @@ public class Player_Behaviour : MonoBehaviour
                 else if (pickUpname.tag == "ChutePickup")
                 {
                     _haveChute = true;
-                    Destroy(pickUpname.gameObject);
                     //Debug.Log("Chute");
+                    Destroy(pickUpname.gameObject);
 
                 }
             }
@@ -344,31 +346,42 @@ public class Player_Behaviour : MonoBehaviour
     {
         //Debug.Log("lockmove");
         _moveInput = Vector2.zero;
+        SetGravityScale(0);
+        RB.constraints = RigidbodyConstraints2D.FreezePosition;
+        RB.velocity = Vector2.zero;
         lockMove = true;
     }
     public void unlockMovement()
     {
         //Debug.Log("unlockmove");
         _moveInput = Vector2.zero;
+        RB.constraints = RigidbodyConstraints2D.None;
+        RB.constraints = RigidbodyConstraints2D.FreezeRotation;
+        SetGravityScale(Data.gravityScale);
         lockMove = false;
     }
 
     public void Death()
     {
         //Put Death animation Here 
+        
         lockMovement();
+        isDead = true;
+
         //Fade Out maybe use method
 
-        chaseEnemy.GetComponent<Chase_Scene_Manager>().ResetChase();
-        Spawning();
+        //chaseEnemy.GetComponent<Chase_Scene_Manager>().ResetChase();
+
         //Fade In
     }
 
     public void Spawning()
     {
         RB.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + 2);
+        isDead = false;
         //Debug.Log("Spawn delay start");
         StartCoroutine(SpawnDelay());
+        
     }
     #endregion
 
@@ -523,6 +536,7 @@ public class Player_Behaviour : MonoBehaviour
         animator.SetBool("IsFalling", _isJumpFalling);
         animator.SetBool("IsWalking", isRunning);
         animator.SetBool("CanClimb", canClimb);
+        animator.SetBool("Death", isDead);
     }
     #endregion
     #region Ledges

@@ -26,7 +26,7 @@ public class World_Manager_Matt : MonoBehaviour
     void Start()
     {
         pauseCanvas.enabled = false;
-        player = GameObject.Find("Player_Corto");
+        //player = GameObject.Find("Player_Corto");
         canvas = GetComponent<Canvas>();
         canvas.enabled = true;
         group.alpha = 0f;
