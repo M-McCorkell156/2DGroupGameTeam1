@@ -9141,6 +9141,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   animator: {fileID: 480202602}
+  ledgeDetected: 0
+  offset1: {x: 0, y: 0}
+  offset2: {x: 0, y: 0}
 --- !u!95 &480202602
 Animator:
   serializedVersion: 5
