@@ -25,7 +25,7 @@ MonoBehaviour:
   runDeccelAmount: 5
   accelInAir: 0.365
   deccelInAir: 0.345
-  doConserveMomentum: 1
+  doConserveMomentum: 0
   jumpHeight: 8
   jumpTimeToApex: 1
   jumpForce: 16

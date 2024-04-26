@@ -26,11 +26,11 @@ public class TwigFloating : MonoBehaviour
         if (transform.position == pointA.position)
         {
             transform.position = pointC.position;
-            //StartCoroutine(Waiting(gameObject));
+            StartCoroutine(Waiting(gameObject));
 
 
         }
-        if (transform.position == pointB.position)
+        else if (transform.position == pointB.position)
         {
             //trying to make platform wait at Point B for a couple seconds
             speed = 0;
@@ -66,14 +66,17 @@ public class TwigFloating : MonoBehaviour
         }
 
     }
-    //IEnumerator Waiting(GameObject twig)
-    //{
-    //    yield return new WaitForSeconds(3f);
-    //    speed = 0f;
+    IEnumerator Waiting(GameObject twig)
+    {
+        nextPosition = pointB.position;
+        yield return new WaitForSeconds(3f);
         
-    //    yield return new WaitForSeconds(waitTime);
-    //    speed = twigSpeed;
-        
-    //}
+        speed = 0f;
+
+        yield return new WaitForSeconds(waitTime);
+        nextPosition = pointA.position;
+        speed = twigSpeed;
+
+    }
 
 }
