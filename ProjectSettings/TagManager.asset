@@ -19,9 +19,9 @@ TagManager:
   - UI
   - GroundLayer
   - Player
-  - 
-  - 
-  - 
+  - Death
+  - Pickup
+  - Checkpoint
   - 
   - 
   - 
