@@ -10,6 +10,10 @@ TagManager:
   - Checkpoint
   - Chase
   - StickyPickup
+  - Twig
+  - SlowDown
+  - NotClimable
+  - Death
   layers:
   - Default
   - TransparentFX
@@ -22,7 +26,7 @@ TagManager:
   - Death
   - Pickup
   - Checkpoint
-  - 
+  - Climb
   - 
   - 
   - 
