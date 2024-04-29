@@ -105,13 +105,14 @@ public class Player_Behaviour : MonoBehaviour
         SpawnPoint = GameObject.Find("Spawn_Area");
         _haveSticky = false;
         _haveChute = false;
+        
     }
 
     private void Start()
     {
         SetGravityScale(Data.gravityScale);
         IsFacingRight = true;
-        lockMovement();
+        
     }
 
     private void Update()

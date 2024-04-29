@@ -32,6 +32,7 @@ public class World_Manager_Matt : MonoBehaviour
         group.alpha = 0f;
         fadeIn = true;
         FadeIn();
+        player.GetComponent<Player_Behaviour>().lockMovement();
     }
 
     void Update()

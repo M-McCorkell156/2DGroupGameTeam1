@@ -1224,7 +1224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: bb6f4db46663088418233ca3cf314d61, type: 2}
   spawnPoint: {fileID: 1629396710}
-  spawnTime: 3
+  spawnTime: 1
   nextSceneObj: {fileID: 0}
   chaseEnemy: {fileID: 0}
   _groundCheckPoint: {fileID: 241370289}
@@ -1247,6 +1247,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   animator: {fileID: 0}
+  ledgeDetected: 0
+  offset1: {x: 0, y: 0}
+  offset2: {x: 0, y: 0}
+  allowLedgeTime: 0
 --- !u!1 &238230180
 GameObject:
   m_ObjectHideFlags: 0
