@@ -93,6 +93,7 @@ public class Player_Behaviour : MonoBehaviour
 
     private bool canGrabLedge = true;
     private bool canClimb;
+    [SerializeField] private float allowLedgeTime;
 
     #endregion
 
@@ -372,6 +373,7 @@ public class Player_Behaviour : MonoBehaviour
         //Put Death animation Here 
         lockMovement();
         isDead = true;
+        gameObject.transform.parent = null;
         //Fade Out maybe use method
 
         chaseEnemy.GetComponent<Chase_Scene_Manager>().ResetChase();
@@ -381,10 +383,12 @@ public class Player_Behaviour : MonoBehaviour
 
     public void Spawning()
     {
-        RB.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + 2);
         isDead = false;
+        RB.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + 2);
+        
         //Debug.Log("Spawn delay start");
-        StartCoroutine(SpawnDelay());
+        //StartCoroutine(SpawnDelay());
+        Invoke(nameof(unlockMovement), spawnTime);
 
     }
 
@@ -530,7 +534,7 @@ public class Player_Behaviour : MonoBehaviour
 
     private IEnumerator SpawnDelay()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(spawnTime);
         //Debug.Log("Spawn delay done");
         unlockMovement();
     }
@@ -580,7 +584,7 @@ public class Player_Behaviour : MonoBehaviour
         Debug.Log("Climbing");
         canClimb = false;
         transform.position = climbOverPos;
-        Invoke(nameof(AllowLedgeGrab), 2f);
+        Invoke(nameof(AllowLedgeGrab), allowLedgeTime);
     }
     private void AllowLedgeGrab() => canGrabLedge = true;
 
