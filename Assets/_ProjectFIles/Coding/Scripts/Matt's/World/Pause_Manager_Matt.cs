@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pause_Manager_Matt : MonoBehaviour
 {
     private Canvas canvas;
-    public Canvas titleCanvas;
+    //public Canvas titleCanvas;
 
     public CanvasGroup group;
 
@@ -32,7 +32,8 @@ public class Pause_Manager_Matt : MonoBehaviour
 
     void Update()
     {
-        if (!titleCanvas.enabled && Input.GetKey(KeyCode.Escape))
+        //!titleCanvas.enabled &&
+        if (Input.GetKey(KeyCode.Escape))
         {
 
             //Debug.Log("Pause");

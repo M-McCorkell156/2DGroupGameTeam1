@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class StartCutscene : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class StartCutscene : MonoBehaviour
     [SerializeField] private PlayableDirector cutsceneTimeline;
     private double titleDuration;
     private double cutsceneDuration;
+    private bool isCutscene;
+    private bool isTitle;
 
     
     private void Awake()
@@ -28,16 +31,24 @@ public class StartCutscene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.anyKey && !isTitle && !isCutscene)
+        {
+            titleTimeline.Play();
+            isTitle = true;
+        }
         if (titleTimeline.time == titleDuration)
         {
             Debug.Log("Loading");
             cutsceneTimeline.Play();
-            if (cutsceneTimeline.time == cutsceneDuration)
-            {
-                Debug.Log("LoadingGame!");
-                //LoadGameHere
-            }
+            isCutscene = true;
+            
 
+        }
+        if (cutsceneTimeline.time == cutsceneDuration)
+        {
+            Debug.Log("LoadingGame!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //LoadGameHere
         }
     }
 }
