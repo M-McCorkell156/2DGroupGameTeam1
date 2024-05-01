@@ -16,6 +16,7 @@ public class Player_Behaviour : MonoBehaviour
     private bool isDead;
 
     private bool isRunning;
+    private bool isSpawning;
 
     //Locking
     private bool lockMove;
@@ -168,6 +169,7 @@ public class Player_Behaviour : MonoBehaviour
             if (Physics2D.OverlapBox(_roofCheckPoint.position, _roofCheckSize, 0, _stickyRoofLayer) && _haveSticky)
             {
                 _isStickng = true;
+                IsJumping = false;
             }
             else
             {
@@ -366,6 +368,7 @@ public class Player_Behaviour : MonoBehaviour
         RB.constraints = RigidbodyConstraints2D.FreezeRotation;
         SetGravityScale(Data.gravityScale);
         lockMove = false;
+        
     }
 
 
@@ -394,10 +397,11 @@ public class Player_Behaviour : MonoBehaviour
     {
         isDead = false;
         
-        RB.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + 2);
         
+
         //Debug.Log("Spawn delay start");
         //StartCoroutine(SpawnDelay());
+        RB.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + 2);
         Invoke(nameof(unlockMovement), spawnTime);
 
     }
@@ -558,6 +562,8 @@ public class Player_Behaviour : MonoBehaviour
         animator.SetBool("IsWalking", isRunning);
         animator.SetBool("CanClimb", canClimb);
         animator.SetBool("Death", isDead);
+        animator.SetBool("IsSticking", _isStickng);
+        
     }
     #endregion
     #region Ledges
