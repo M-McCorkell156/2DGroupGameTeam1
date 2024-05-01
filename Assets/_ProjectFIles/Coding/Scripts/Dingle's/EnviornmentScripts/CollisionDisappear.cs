@@ -77,7 +77,7 @@ public class CollisionDisappear : MonoBehaviour
             {
                 //Debug.Log("Fading Done");
                 fadeIn = false;
-                fadeOut = true;
+                
                 fadeInLoop = false;
             }
         }
@@ -95,7 +95,7 @@ public class CollisionDisappear : MonoBehaviour
             if (alpha <= 0)
             {
                
-                fadeIn = true;
+                
                 fadeOut = false;
                 fadeOutLoop = false;
             }
