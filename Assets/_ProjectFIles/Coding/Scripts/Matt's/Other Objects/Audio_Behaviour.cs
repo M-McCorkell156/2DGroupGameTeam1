@@ -11,13 +11,15 @@ public class Audio_Behaviour : MonoBehaviour
  
     public void PlayClip(int i)
     {
-        source.clip = clips[i];
-        source.enabled = true;
+        source.clip = clips[i ];
+        source.Play();
+        //source.enabled = true;
     }
 
     public void EndClip()
     { 
-        source.enabled = false;
+        //source.enabled = false;
+        source = null;  
     }
 
 }

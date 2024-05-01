@@ -30,11 +30,11 @@ public class Player_Behaviour : MonoBehaviour
     public float LastPressedJumpTime { get; private set; }
 
     //Chute
-    private bool _haveChute;
+    [SerializeField] private bool _haveChute;
     private bool _isChuting;
 
     //Sticky roof 
-    private bool _haveSticky;
+    [SerializeField] private bool _haveSticky;
     private bool _isStickng;
 
     //Pick Ups
