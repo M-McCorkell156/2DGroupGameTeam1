@@ -6,6 +6,7 @@ public class Pause_Manager_Matt : MonoBehaviour
 {
     private Canvas canvas;
     //public Canvas titleCanvas;
+    public Canvas dialogueCanvas;
 
     public CanvasGroup group;
 
@@ -58,6 +59,7 @@ public class Pause_Manager_Matt : MonoBehaviour
     private void FadeIn()
     {
         canvas.enabled = true;
+        dialogueCanvas.enabled = false;
         fadeIn = true;
         player.GetComponent<Player_Behaviour>().lockMovement();
 
