@@ -374,6 +374,14 @@ public class Player_Behaviour : MonoBehaviour
         //Put Death animation Here 
         lockMovement();
         isDead = true;
+        IsJumping = false;
+        _isChuting = false;
+        _isJumpFalling = false;
+        isRunning = false;
+        canClimb = false;
+
+
+
         gameObject.transform.parent = null;
         //Fade Out maybe use method
 
@@ -385,6 +393,7 @@ public class Player_Behaviour : MonoBehaviour
     public void Spawning()
     {
         isDead = false;
+        
         RB.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + 2);
         
         //Debug.Log("Spawn delay start");
