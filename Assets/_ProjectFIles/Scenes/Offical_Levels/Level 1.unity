@@ -6638,7 +6638,7 @@ GameObject:
   - component: {fileID: 844289233}
   - component: {fileID: 844289235}
   - component: {fileID: 844289236}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Chant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6844,10 +6844,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 844289228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 091ed95e66ad54e4089d8117ec724cd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 23024464ee9a4b745a29c252dce7ca70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 390605704}
+  cutTimeline: {fileID: 390605704}
 --- !u!1 &846716537
 GameObject:
   m_ObjectHideFlags: 0

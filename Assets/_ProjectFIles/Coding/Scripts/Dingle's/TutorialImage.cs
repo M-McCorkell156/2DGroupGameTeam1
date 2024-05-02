@@ -6,37 +6,94 @@ using UnityEngine.SceneManagement;
 
 public class TutorialImage : MonoBehaviour
 {
+    private Canvas canvas;
+    public CanvasGroup group;
+
+
+    public bool fadeIn = false;
+
+    private bool fadeOut = false;
+
+    private bool fadeInLoop = false;
+
+    private bool fadeOutLoop = false;
+
+    [SerializeField] private float alphaMultiplier;
+
+
+
+    public bool isTitle;
+    public bool isCutscene;
     [SerializeField] private PlayableDirector transition;
     private double transitionDuration;
-    private bool isTransition;
 
     private void Awake()
     {
-        transition = transition.GetComponent<PlayableDirector>();
-        transitionDuration = transition.duration;
-        Debug.Log(transitionDuration);
-        Debug.Log(SceneManager.GetActiveScene().buildIndex + 1);
+        canvas = GetComponent<Canvas>();
+        canvas.enabled = true;
+        group.alpha = 0f;
+
     }
 
     private void Update()
     {
-        if (isTransition)
+
+        if (transition.time == transitionDuration)
         {
-            Debug.Log(transition.time);
-            if (transition.time == transitionDuration )
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        if (Input.anyKey && !isTitle && isCutscene)
+        {
+            if (fadeOut)
             {
-                Debug.Log("Loading");
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                fadeOutLoop = true;
             }
         }
         
+        if (fadeOutLoop)
+        {
+            FadeOut();
+        }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void FadeIn()
     {
-        isTransition = true;
-        transition.Play();
-    }
+        canvas.enabled = true;
 
+        fadeIn = true;
+
+        if (group.alpha < 1)
+        {
+            group.alpha += Time.deltaTime * alphaMultiplier;
+            //Debug.Log("Fading In");
+            if (group.alpha >= 1)
+            {
+                //Debug.Log("Fading Done");
+                fadeIn = false;
+                fadeOut = true;
+                fadeInLoop = false;
+                transition.Play();
+            }
+        }
+
+    }
+    private void FadeOut()
+    {
+        fadeOut = true;
+
+        //Debug.Log("Start Fade Out");
+        if (group.alpha >= 0)
+        {
+            group.alpha -= Time.deltaTime * alphaMultiplier;
+
+            if (group.alpha <= 0)
+            {
+                canvas.enabled = false;
+                fadeIn = true;
+                fadeOut = false;
+                fadeOutLoop = false;
+                
+            }
+        }
+    }
 
 }
