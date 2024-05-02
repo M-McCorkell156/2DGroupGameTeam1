@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_ProjectFIles/Scenes/Offical_Levels/Level4.unity
     guid: 10438af596225004f9e62709bc281f17
+  - enabled: 1
+    path: Assets/_ProjectFIles/Scenes/Cutscenes/EndGameCutscene.unity
+    guid: a5d4f5ccfc8fe9e41a47a5e8dd7582ca
   m_configObjects: {}

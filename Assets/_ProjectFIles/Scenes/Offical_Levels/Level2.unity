@@ -6479,7 +6479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueCanvas: {fileID: 268484681}
   group: {fileID: 356263498}
-  player: {fileID: 0}
+  player: {fileID: 480202592}
   alphaMultiplier: 1
 --- !u!114 &356263495
 MonoBehaviour:
