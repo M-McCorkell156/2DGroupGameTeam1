@@ -10821,7 +10821,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1438240390}
   dialogue:
   - ...Ew who are you?
-  - You must be one of those mushroom, looking for your family?
+  - You must be one of those mushrooms, looking for your family?
   - ... You know, they actually live right down this cave here
   contButton: {fileID: 491511495}
   wordSpeed: 0.06
