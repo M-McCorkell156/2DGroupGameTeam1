@@ -15,7 +15,7 @@ public class Player_Behaviour : MonoBehaviour
 
     private bool isDead;
 
-    private bool isRunning;
+    [HideInInspector] public bool isRunning;
     private bool isSpawning;
 
     //Locking
@@ -79,7 +79,7 @@ public class Player_Behaviour : MonoBehaviour
     [Space(5)]
 
     [Header("Animator")]
-    [SerializeField] private Animator animator;
+    public Animator animator;
 
 
     #region LedgeStuff
@@ -104,8 +104,8 @@ public class Player_Behaviour : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
         SpawnPoint = GameObject.Find("Spawn_Area");
-        _haveSticky = false;
-        _haveChute = false;
+        //_haveSticky = false;
+        //_haveChute = false;
         
     }
 

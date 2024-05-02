@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class New_Dialog_Behaviour : MonoBehaviour
 {
     public GameObject dialoguePanel;
+    public Text speakerName;
     public Text dialogueText;
     public string[] dialogue;
     private int index;
+
 
     public GameObject contButton;
     public float wordSpeed;
     public bool playerIsClose;
     public bool enterConvo;
+
 
     public LayerMask playerLayer;
     public GameObject playerObject;
@@ -36,7 +40,12 @@ public class New_Dialog_Behaviour : MonoBehaviour
                 enterConvo = false;
                 //Actiavte Panel
                 dialoguePanel.SetActive(true);
+                speakerName.text = this.gameObject.name;
+                //playerObject.GetComponent<Player_Behaviour>().isRunning = false;
+                playerObject.GetComponent<Player_Behaviour>().animator.SetBool("IsWalking", false);
                 playerObject.GetComponent<Player_Behaviour>().lockMovement();
+                
+                
                 StartCoroutine(Typing());
             }
         }

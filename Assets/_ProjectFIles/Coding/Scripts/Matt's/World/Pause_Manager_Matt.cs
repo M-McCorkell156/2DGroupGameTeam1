@@ -61,6 +61,7 @@ public class Pause_Manager_Matt : MonoBehaviour
         canvas.enabled = true;
         dialogueCanvas.enabled = false;
         fadeIn = true;
+        player.GetComponent<Player_Behaviour>().animator.speed = 0;
         player.GetComponent<Player_Behaviour>().lockMovement();
 
         //Debug.Log("Start Fade In");
