@@ -7584,6 +7584,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1152029860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &99058312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 99058313}
+  m_Layer: 0
+  m_Name: Empty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &99058313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99058312}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -50.2, y: -40.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1863159350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &106357808
 GameObject:
   m_ObjectHideFlags: 0
@@ -11974,9 +12005,10 @@ GameObject:
   - component: {fileID: 177296039}
   - component: {fileID: 177296038}
   - component: {fileID: 177296040}
-  m_Layer: 0
+  - component: {fileID: 177296041}
+  m_Layer: 10
   m_Name: End
-  m_TagString: Untagged
+  m_TagString: NextScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12093,6 +12125,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6036267, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &177296041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177296037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4e2e7d9687ad44280a32098e0e8f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &180988435
 GameObject:
   m_ObjectHideFlags: 0
@@ -78794,7 +78838,7 @@ Transform:
   m_GameObject: {fileID: 1565347461}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 258.4, y: -39.3, z: 0}
+  m_LocalPosition: {x: 46.6, y: -17.6, z: 0}
   m_LocalScale: {x: 0.15596552, y: 0.1565738, z: 0.31193104}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -91626,6 +91670,7 @@ Transform:
   - {fileID: 1973151714}
   - {fileID: 106357809}
   - {fileID: 1362335406}
+  - {fileID: 99058313}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1864775643
@@ -96534,7 +96579,7 @@ GameObject:
   - component: {fileID: 1973151720}
   m_Layer: 8
   m_Name: Chaser
-  m_TagString: Death
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96574,7 +96619,7 @@ MonoBehaviour:
   - {fileID: 46573960}
   - {fileID: 1046240785}
   - {fileID: 106357808}
-  startPoint: {fileID: 1362335405}
+  startPoint: {fileID: 99058312}
   endPoint: {fileID: 106357808}
   speed: 6
 --- !u!212 &1973151716
@@ -96735,7 +96780,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.09811616}
