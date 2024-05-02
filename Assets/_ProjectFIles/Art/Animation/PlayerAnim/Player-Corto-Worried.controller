@@ -196,7 +196,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 68d57cccceb735e4c831149b0c4d5b73, type: 2}
+  m_Motion: {fileID: 7400000, guid: 32fe90de2b41bf1428c5edb69f0a7709, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -242,7 +242,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 6d1a4dd8ddad51a429c009f6be4cdb53, type: 2}
+    m_Motion: {fileID: 7400000, guid: f9ed72e46077a9c4e86877e5eae6fc8c, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -581,7 +581,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player-Corto
+  m_Name: Player-Corto-Worried
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsJumping
@@ -1049,7 +1049,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: ab6d146cebca7a44fad8bac0799345d7, type: 2}
+    m_Motion: {fileID: 7400000, guid: d3d6dfd12a09417438d3181f31c412f7, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1099,7 +1099,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 6bb3845bd637bd943b0a16585ad97403, type: 2}
+    m_Motion: {fileID: 7400000, guid: 25217be742034b949bcd66f68ee9c4cf, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1177,7 +1177,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 1d33b5490c3b3074db41c8dad7763b9d, type: 2}
+    m_Motion: {fileID: 7400000, guid: aca89d53752f07d45bd2c1e2a5bc6385, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
