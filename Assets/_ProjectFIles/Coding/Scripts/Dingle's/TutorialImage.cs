@@ -12,16 +12,20 @@ public class TutorialImage : MonoBehaviour
 
     private void Awake()
     {
-        
+        transition = transition.GetComponent<PlayableDirector>();
         transitionDuration = transition.duration;
+        Debug.Log(transitionDuration);
+        Debug.Log(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void Update()
     {
         if (isTransition)
         {
+            Debug.Log(transition.time);
             if (transition.time == transitionDuration )
             {
+                Debug.Log("Loading");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
@@ -30,6 +34,7 @@ public class TutorialImage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        isTransition = true;
         transition.Play();
     }
 
