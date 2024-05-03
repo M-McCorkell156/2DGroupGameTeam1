@@ -96543,7 +96543,7 @@ MonoBehaviour:
   - {fileID: 106357808}
   startPoint: {fileID: 99058312}
   endPoint: {fileID: 106357808}
-  speed: 6
+  speed: 5
 --- !u!212 &1973151716
 SpriteRenderer:
   m_ObjectHideFlags: 0
