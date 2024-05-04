@@ -164,6 +164,10 @@ public class Player_Behaviour : MonoBehaviour
                     LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
                     _isChuting = false;
                 }
+                else
+                {
+                    _isJumpFalling = true;
+                }
             }
             //Sticking Check
             if (Physics2D.OverlapBox(_roofCheckPoint.position, _roofCheckSize, 0, _stickyRoofLayer) && _haveSticky)
@@ -188,7 +192,7 @@ public class Player_Behaviour : MonoBehaviour
             {
                 //Debug.Log("Spawn time");
                 checkpointCollider = Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _checkPointLayer);
-                SpawnPoint.transform.position = checkpointCollider.transform.position;
+                
                 //Chase scene 
                 if (checkpointCollider.tag == "Chase")
                 {
@@ -198,6 +202,10 @@ public class Player_Behaviour : MonoBehaviour
                 else if (checkpointCollider.tag == "NextScene")
                 {
                     nextSceneObj.GetComponent<Scene_Manager>().LoadScene();
+                }
+                else
+                {
+                    SpawnPoint.transform.position = checkpointCollider.transform.position;
                 }
             }
 
@@ -229,6 +237,10 @@ public class Player_Behaviour : MonoBehaviour
             {
                 _isJumpFalling = true;
             }
+            else if (RB.velocity.y >= 0)
+            {
+                _isJumpFalling = false;
+            }
             if (IsJumping && RB.velocity.y < 0)
             {
                 IsJumping = false;
@@ -253,7 +265,7 @@ public class Player_Behaviour : MonoBehaviour
             if (CanJump() && LastPressedJumpTime > 0)
             {
                 IsJumping = true;
-                _isJumpFalling = false;
+                //_isJumpFalling = false;
                 Jump();
             }
 
@@ -356,7 +368,8 @@ public class Player_Behaviour : MonoBehaviour
         //Debug.Log("lockmove");
         _moveInput = Vector2.zero;
         SetGravityScale(0);
-        RB.constraints = RigidbodyConstraints2D.FreezePosition;
+        
+        RB.constraints = RigidbodyConstraints2D.FreezeAll;
         RB.velocity = Vector2.zero;
         lockMove = true;
     }
@@ -364,8 +377,10 @@ public class Player_Behaviour : MonoBehaviour
     {
         //Debug.Log("unlockmove");
         _moveInput = Vector2.zero;
-        RB.constraints = RigidbodyConstraints2D.None;
-        RB.constraints = RigidbodyConstraints2D.FreezeRotation;
+        
+        RB.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+        
+        
         SetGravityScale(Data.gravityScale);
         lockMove = false;
         
@@ -396,12 +411,12 @@ public class Player_Behaviour : MonoBehaviour
     public void Spawning()
     {
         isDead = false;
-        
-        
+
+
 
         //Debug.Log("Spawn delay start");
         //StartCoroutine(SpawnDelay());
-        RB.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y + 2);
+        RB.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y);//+ 2);
         Invoke(nameof(unlockMovement), spawnTime);
 
     }
