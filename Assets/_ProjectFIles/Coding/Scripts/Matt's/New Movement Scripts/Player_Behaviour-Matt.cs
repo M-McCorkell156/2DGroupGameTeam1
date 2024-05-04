@@ -389,6 +389,7 @@ public class Player_Behaviour : MonoBehaviour
 
     public void Death()
     {
+        chaseEnemy.GetComponent<Chase_Scene_Manager>().ResetChase();
         //Put Death animation Here 
         lockMovement();
         isDead = true;
@@ -397,13 +398,10 @@ public class Player_Behaviour : MonoBehaviour
         _isJumpFalling = false;
         isRunning = false;
         canClimb = false;
-
-
-
         gameObject.transform.parent = null;
         //Fade Out maybe use method
 
-        chaseEnemy.GetComponent<Chase_Scene_Manager>().ResetChase();
+        
         
         //Fade In
     }

@@ -4990,8 +4990,8 @@ Transform:
   m_GameObject: {fileID: 259607172}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.8, y: -11.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -16.4, y: 10.7, z: 0}
+  m_LocalScale: {x: 2.2375, y: 57.645016, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2038667008}
@@ -5028,7 +5028,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -16.994616, y: 20.746773}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5039,7 +5039,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5172234, y: 50.036552}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &268200675
 GameObject:
@@ -6803,6 +6803,7 @@ GameObject:
   - component: {fileID: 389938220}
   - component: {fileID: 389938219}
   - component: {fileID: 389938218}
+  - component: {fileID: 389938222}
   m_Layer: 6
   m_Name: FloatingTwig3 - Gumball
   m_TagString: Untagged
@@ -6899,7 +6900,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -0.032339096, y: 0.058586538}
   m_SpriteTilingProperty:
@@ -6966,6 +6967,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &389938222
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389938216}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &405550061
 GameObject:
   m_ObjectHideFlags: 0
@@ -8220,6 +8240,7 @@ GameObject:
   - component: {fileID: 478631232}
   - component: {fileID: 478631231}
   - component: {fileID: 478631230}
+  - component: {fileID: 478631235}
   m_Layer: 6
   m_Name: FloatingTwig10 -Sam
   m_TagString: Untagged
@@ -8301,7 +8322,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.0010044575, y: 0.122149736}
   m_SpriteTilingProperty:
@@ -8383,6 +8404,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1178414679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!251 &478631235
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478631229}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &479028063
 GameObject:
   m_ObjectHideFlags: 0
@@ -8731,7 +8771,7 @@ MonoBehaviour:
   _haveChute: 1
   _haveSticky: 0
   spawnPoint: {fileID: 1983000782}
-  spawnTime: 3
+  spawnTime: 1
   nextSceneObj: {fileID: 639910613}
   chaseEnemy: {fileID: 861493689}
   _groundCheckPoint: {fileID: 180843641}
@@ -9980,6 +10020,7 @@ GameObject:
   - component: {fileID: 540805600}
   - component: {fileID: 540805599}
   - component: {fileID: 540805598}
+  - component: {fileID: 540805602}
   m_Layer: 6
   m_Name: FloatingTwig9 - Henry
   m_TagString: Untagged
@@ -10076,7 +10117,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.0010044575, y: 0.122149736}
   m_SpriteTilingProperty:
@@ -10143,6 +10184,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &540805602
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540805596}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &557928773
 GameObject:
   m_ObjectHideFlags: 0
@@ -11866,6 +11926,7 @@ GameObject:
   - component: {fileID: 757133194}
   - component: {fileID: 757133193}
   - component: {fileID: 757133192}
+  - component: {fileID: 757133196}
   m_Layer: 6
   m_Name: FloatingTwig7 - Scooby
   m_TagString: Untagged
@@ -11962,7 +12023,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.0010044575, y: 0.122149736}
   m_SpriteTilingProperty:
@@ -12029,6 +12090,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &757133196
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757133190}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &757545604
 GameObject:
   m_ObjectHideFlags: 0
@@ -15828,6 +15908,7 @@ GameObject:
   - component: {fileID: 1028352220}
   - component: {fileID: 1028352219}
   - component: {fileID: 1028352218}
+  - component: {fileID: 1028352222}
   m_Layer: 6
   m_Name: FloatingTwig4 - Finn
   m_TagString: Untagged
@@ -15924,7 +16005,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -0.06825614, y: 0.113304816}
   m_SpriteTilingProperty:
@@ -15991,6 +16072,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &1028352222
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028352216}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1039410792
 GameObject:
   m_ObjectHideFlags: 0
@@ -18922,6 +19022,7 @@ GameObject:
   - component: {fileID: 1194933867}
   - component: {fileID: 1194933866}
   - component: {fileID: 1194933865}
+  - component: {fileID: 1194933869}
   m_Layer: 6
   m_Name: FloatingTwig2 - Selma
   m_TagString: Untagged
@@ -19018,7 +19119,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.07321596, y: -0.05179949}
   m_SpriteTilingProperty:
@@ -19085,6 +19186,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &1194933869
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194933863}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1209300198
 GameObject:
   m_ObjectHideFlags: 0
@@ -23532,6 +23652,7 @@ GameObject:
   - component: {fileID: 1542546608}
   - component: {fileID: 1542546607}
   - component: {fileID: 1542546606}
+  - component: {fileID: 1542546610}
   m_Layer: 6
   m_Name: FloatingTwig6 - Margaret
   m_TagString: Untagged
@@ -23628,7 +23749,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.054440975, y: -0.016757458}
   m_SpriteTilingProperty:
@@ -23695,6 +23816,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &1542546610
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542546604}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1543030488
 GameObject:
   m_ObjectHideFlags: 0
@@ -29797,6 +29937,7 @@ GameObject:
   - component: {fileID: 1972388290}
   - component: {fileID: 1972388289}
   - component: {fileID: 1972388288}
+  - component: {fileID: 1972388292}
   m_Layer: 6
   m_Name: FloatingTwig - Randy
   m_TagString: Untagged
@@ -29849,7 +29990,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.04068792, y: 0.13036539}
   m_SpriteTilingProperty:
@@ -29960,6 +30101,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &1972388292
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972388286}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1981935168
 GameObject:
   m_ObjectHideFlags: 0
@@ -31977,6 +32137,7 @@ GameObject:
   - component: {fileID: 2113535062}
   - component: {fileID: 2113535061}
   - component: {fileID: 2113535060}
+  - component: {fileID: 2113535064}
   m_Layer: 6
   m_Name: FloatingTwig5 - Marshall
   m_TagString: Untagged
@@ -32029,7 +32190,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.04068792, y: 0.13036539}
   m_SpriteTilingProperty:
@@ -32140,6 +32301,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &2113535064
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113535058}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &2117132950
 GameObject:
   m_ObjectHideFlags: 0
