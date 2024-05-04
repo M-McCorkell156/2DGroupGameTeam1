@@ -104,7 +104,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 3
     messageOptions: 0
-  - time: 0.6166667
+  - time: 0.56666666
     functionName: Spawning
     data: 
     objectReferenceParameter: {fileID: 0}

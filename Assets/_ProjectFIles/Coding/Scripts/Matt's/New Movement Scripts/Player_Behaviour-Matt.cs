@@ -46,7 +46,7 @@ public class Player_Behaviour : MonoBehaviour
     [Header("Objects")]
 
     //Spawning/Dying
-    private GameObject SpawnPoint;
+    //private GameObject SpawnPoint;
     [SerializeField] private GameObject spawnPoint;
     private Collider2D checkpointCollider;
     public float spawnTime;
@@ -103,7 +103,7 @@ public class Player_Behaviour : MonoBehaviour
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
-        SpawnPoint = GameObject.Find("Spawn_Area");
+        //SpawnPoint = GameObject.Find("Spawn_Area");
         //_haveSticky = false;
         //_haveChute = false;
         
@@ -205,7 +205,7 @@ public class Player_Behaviour : MonoBehaviour
                 }
                 else
                 {
-                    SpawnPoint.transform.position = checkpointCollider.transform.position;
+                    spawnPoint.transform.position = checkpointCollider.transform.position;
                 }
             }
 
