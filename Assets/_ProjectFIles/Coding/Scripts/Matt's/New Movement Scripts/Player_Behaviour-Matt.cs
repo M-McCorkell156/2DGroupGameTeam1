@@ -596,8 +596,10 @@ public class Player_Behaviour : MonoBehaviour
             }
             else
             {
-                climbBegunPos = ledgePos + -offset1;
-                climbOverPos = ledgePos + -offset2;
+                climbBegunPos.x = ledgePos.x + -offset1.x;
+                climbOverPos.x = ledgePos.x + -offset2.x;
+                climbBegunPos.y = ledgePos.y + offset1.y;
+                climbOverPos.y = ledgePos.y + offset2.y;
             }
         }
 

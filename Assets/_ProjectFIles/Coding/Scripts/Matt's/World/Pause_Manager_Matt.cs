@@ -82,6 +82,7 @@ public class Pause_Manager_Matt : MonoBehaviour
     private void FadeOut()
     {
         fadeOut = true;
+        player.GetComponent<Player_Behaviour>().animator.speed = 1;
         player.GetComponent<Player_Behaviour>().unlockMovement();
 
         //Debug.Log("Start Fade Out");
